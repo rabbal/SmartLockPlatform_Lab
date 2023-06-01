@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SmartLockPlatform.Application.Base;
+using SmartLockPlatform.Application.Queries;
 
 namespace SmartLockPlatform.Application;
 
@@ -12,6 +13,7 @@ public static class DependencyInjection
         {
             configuration.RegisterServicesFromAssemblyContaining(typeof(DependencyInjection));
         });
+        services.AddScoped<ISiteQueries, SiteQueries>();
         return services;
     }
 }

@@ -1,10 +1,10 @@
 using System.Security.Claims;
 
-namespace SmartLockPlatform.Infrastructure.Identity;
+namespace SmartLockPlatform.Application.Identity;
 
 public static class UserClaimTypes
 {
-    public const string Username = ClaimTypes.Name;
+    public const string Name = ClaimTypes.Name;
     public const string Email = ClaimTypes.Email;
     public const string UserId = ClaimTypes.NameIdentifier;
     public const string SecurityStampToken = nameof(SecurityStampToken);

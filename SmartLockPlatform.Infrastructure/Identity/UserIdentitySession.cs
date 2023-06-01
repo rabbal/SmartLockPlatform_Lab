@@ -3,6 +3,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using SmartLockPlatform.Application.Base;
+using SmartLockPlatform.Application.Identity;
 
 namespace SmartLockPlatform.Infrastructure.Identity;
 

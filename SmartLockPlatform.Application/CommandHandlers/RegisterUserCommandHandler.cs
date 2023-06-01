@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SmartLockPlatform.Application.Base;
 using SmartLockPlatform.Application.Commands;
@@ -27,10 +28,15 @@ public class RegisterUserCommandHandler : ICommandHandler<RegisterUserCommand>
         var email = Email.Create(command.Email);
         if (email.Failed) return email;
 
+        if (await IsDuplicateUserWithEmail(command.Email, cancellationToken))
+        {
+            return Fail("The provided email address has been already taken by someone.");
+        }
+        
         var firstName = new FirstName(command.FirstName);
         var lastName = new LastName(command.LastName);
         var user = new User(firstName, lastName, email.Value, false);
-
+        
         var password = Password.Create(command.Password, _options.Value.Password);
         if (password.Failed) return password;
 
@@ -40,5 +46,10 @@ public class RegisterUserCommandHandler : ICommandHandler<RegisterUserCommand>
         await _dbContext.Complete(cancellationToken);
 
         return Ok();
+    }
+
+    private Task<bool> IsDuplicateUserWithEmail(string email, CancellationToken cancellationToken)
+    {
+        return _dbContext.Set<User>().AnyAsync(i => i.Email.Value == email, cancellationToken);
     }
 }

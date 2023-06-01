@@ -25,7 +25,7 @@ public static class QueryableExtensions
         // source = source.Where(filterExpression);
 
         var items = await source
-            .OrderBy(sorting)//TODO: support SortExpression
+            .OrderBy(sorting) //TODO: support SortExpression
             .Skip(skip)
             .Take(top)
             .ToListAsync(cancellationToken);
@@ -55,6 +55,13 @@ public static class QueryableExtensions
         where TKey : IEquatable<TKey>, IComparable<TKey>
     {
         return source.SingleOrDefaultAsync(IdEqualityExpression<TEntity, TKey>(id), cancellationToken);
+    }
+
+    public static Task<TEntity?> FindWithCriteria<TEntity>(this IQueryable<TEntity> source,
+        Expression<Func<TEntity, bool>> predicate,
+        CancellationToken cancellationToken = default) where TEntity : class
+    {
+        return source.SingleOrDefaultAsync(predicate, cancellationToken);
     }
 
     private static Expression<Func<TEntity, bool>> IdEqualityExpression<TEntity, TKey>(TKey id)
