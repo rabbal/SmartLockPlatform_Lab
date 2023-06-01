@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLockPlatform.Domain", "SmartLockPlatform.Domain\SmartLockPlatform.Domain.csproj", "{C424695B-525C-447F-9263-5A0D1DD420A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLockPlatform.Test.Unit", "SmartLockPlatform.Test.Unit\SmartLockPlatform.Test.Unit.csproj", "{7D2EFCAC-7268-4B31-BBC9-ECC2EE1F48A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4CD2584B-55ED-48FF-8020-B1B70131B7D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLockPlatform.Application", "SmartLockPlatform.Application\SmartLockPlatform.Application.csproj", "{688C5333-CE10-48D4-990A-45AF6C49ACC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLockPlatform.Host", "SmartLockPlatform.Host\SmartLockPlatform.Host.csproj", "{B4257812-92C3-42DB-B847-A25255C937DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLockPlatform.Infrastructure", "SmartLockPlatform.Infrastructure\SmartLockPlatform.Infrastructure.csproj", "{AFCFC1D5-CF1E-4529-81BC-D2D97F0DA6F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLockPlatform.Test.Integration", "SmartLockPlatform.Test.Integration\SmartLockPlatform.Test.Integration.csproj", "{4FA5EB44-2768-46A3-BC7A-A316F4306284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLockPlatform.Mqtt", "SmartLockPlatform.Mqtt\SmartLockPlatform.Mqtt.csproj", "{75668570-C54C-4175-87A5-4CB8ED9C3DE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C424695B-525C-447F-9263-5A0D1DD420A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C424695B-525C-447F-9263-5A0D1DD420A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C424695B-525C-447F-9263-5A0D1DD420A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C424695B-525C-447F-9263-5A0D1DD420A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2EFCAC-7268-4B31-BBC9-ECC2EE1F48A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2EFCAC-7268-4B31-BBC9-ECC2EE1F48A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2EFCAC-7268-4B31-BBC9-ECC2EE1F48A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2EFCAC-7268-4B31-BBC9-ECC2EE1F48A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688C5333-CE10-48D4-990A-45AF6C49ACC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688C5333-CE10-48D4-990A-45AF6C49ACC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688C5333-CE10-48D4-990A-45AF6C49ACC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688C5333-CE10-48D4-990A-45AF6C49ACC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4257812-92C3-42DB-B847-A25255C937DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4257812-92C3-42DB-B847-A25255C937DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4257812-92C3-42DB-B847-A25255C937DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4257812-92C3-42DB-B847-A25255C937DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFCFC1D5-CF1E-4529-81BC-D2D97F0DA6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFCFC1D5-CF1E-4529-81BC-D2D97F0DA6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFCFC1D5-CF1E-4529-81BC-D2D97F0DA6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFCFC1D5-CF1E-4529-81BC-D2D97F0DA6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FA5EB44-2768-46A3-BC7A-A316F4306284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA5EB44-2768-46A3-BC7A-A316F4306284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA5EB44-2768-46A3-BC7A-A316F4306284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA5EB44-2768-46A3-BC7A-A316F4306284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75668570-C54C-4175-87A5-4CB8ED9C3DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75668570-C54C-4175-87A5-4CB8ED9C3DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75668570-C54C-4175-87A5-4CB8ED9C3DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75668570-C54C-4175-87A5-4CB8ED9C3DE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7D2EFCAC-7268-4B31-BBC9-ECC2EE1F48A3} = {4CD2584B-55ED-48FF-8020-B1B70131B7D5}
+		{4FA5EB44-2768-46A3-BC7A-A316F4306284} = {4CD2584B-55ED-48FF-8020-B1B70131B7D5}
+	EndGlobalSection
+EndGlobal
