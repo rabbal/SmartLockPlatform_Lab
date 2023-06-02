@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using SmartLockPlatform.Application.Base;
 
 namespace SmartLockPlatform.Host.Controllers.V1.Models;
 
-public record PaginatedListQueryParams
+public record PaginatedListQueryParams : IPaginatedRequest
 {
     [FromQuery(Name = "$filtering")] public string? Filtering { get; init; }
     [FromQuery(Name = "$sorting")] public string? Sorting { get; init; }

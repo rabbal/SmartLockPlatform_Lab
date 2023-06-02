@@ -10,7 +10,7 @@ public interface IPaginatedRequest
 }
 
 
-public abstract record PaginatedRequest : IPaginatedRequest
+public record PaginatedRequest : IPaginatedRequest
 {
     public string? Filtering { get; init; }
     public string? Sorting { get; init; }

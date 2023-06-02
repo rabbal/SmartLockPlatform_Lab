@@ -77,4 +77,9 @@ public class Lock : Entity
 
         return Ok();
     }
+
+    public bool CanUnLock(Member member)
+    {
+        return _rights.Exists(right => right.Group.Members.Contains(member));
+    }
 }

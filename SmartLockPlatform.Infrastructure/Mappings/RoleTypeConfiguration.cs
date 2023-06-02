@@ -13,10 +13,10 @@ public class RoleTypeConfiguration : IEntityTypeConfiguration<Role>
         builder.Property(r => r.Id).UseHiLo($"{nameof(Role)}_HiLo");
         builder.Property(r => r.Name).HasMaxLength(50);
 
-        const string siteIdPropertyName = "SiteId";
-        builder.Property<long>(siteIdPropertyName);
+        const string siteId = "SiteId";
+        builder.Property<long>(siteId);
         
-        builder.HasIndex(siteIdPropertyName, nameof(Role.Name)).IsUnique().HasDatabaseName("UIX_Role_SiteId_Name");
+        builder.HasIndex(siteId, nameof(Role.Name)).IsUnique().HasDatabaseName("UIX_Role_SiteId_Name");
 
         builder.OwnsMany(r => r.Permissions, p =>
         {

@@ -54,23 +54,24 @@ public sealed class Site : AggregateRoot
     }
 
     
-    public Result CanUnLock(string uuid, User user)
+    public Result CanUnLock(long id, long userId)
     {
-        var @lock = _locks.Find(_ => _.Uuid == uuid);
-
-        if (@lock is null)
-        {
-            return Fail("There is no lock with given uuid.");
-        }
-
-        var member = _members.Find(u => u.User == user);
+        var member = _members.Find(u => u.User.Id == userId);
         if (member is null)
         {
+            return Fail($"There is no user with given userId [{userId}]");
+        }
+        
+        var @lock = _locks.Find(_ => _.Id == id);
+        if (@lock is null)
+        {
+            return Fail($"There is no lock with given id [{id}].");
         }
 
-        @lock.UnLock();
-
-        AddDomainEvent(new LockUnLockedDomainEvent(@lock));
+        if (@lock.CanUnLock(member))
+        {
+            
+        }
 
         return Ok();
     }

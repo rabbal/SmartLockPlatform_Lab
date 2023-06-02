@@ -22,6 +22,7 @@ public class Result
     }
 
     public virtual bool Failed { get; }
+    public bool Forbidden { get; set; }
     public string Message { get; }
     public string? Details { get; }
     public IEnumerable<ValidationFailure> Failures => _failures.AsReadOnly();
@@ -50,8 +51,13 @@ public class Result
     {
         return new Result(true, message, details);
     }
-
-
+    
+    public static Result Forbid(string message, string? details = null)
+    {
+        var result = Fail(message, details);
+        result.Forbidden = true;
+        return result;
+    }
     public static Result Fail(string message, IEnumerable<ValidationFailure> failures)
     {
         return new Result(true, message, string.Empty, failures);

@@ -11,6 +11,7 @@ public class MemberDTO
 
 public class RoleDTO
 {
-    public long Id { get; set; }
-    public string Name { get; set; }
+    public long Id { get; init; }
+    public string Name { get; init; } = default!;
+    public IReadOnlyList<string> Permissions { get; init; } = Array.Empty<string>();
 }

@@ -171,9 +171,10 @@ public static class DependencyInjection
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
-                    Description = "Authorization jwt using",
+                    Description =
+                        "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Scheme = "bearer"
                 });
-
             c.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
                 {
@@ -182,10 +183,8 @@ public static class DependencyInjection
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.SecurityScheme,
-                            Id = JwtBearerDefaults.AuthenticationScheme,
-                        },
-                        Name = "JWT",
-                        In = ParameterLocation.Header
+                            Id = "Bearer"
+                        }
                     },
                     new List<string>()
                 }

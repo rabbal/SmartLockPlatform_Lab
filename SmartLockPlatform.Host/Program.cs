@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using SmartLockPlatform.Application;
 using SmartLockPlatform.Host;
 using SmartLockPlatform.Host.Controllers.V1.Mappings;
@@ -13,8 +14,13 @@ services.AddCustomAuthorization();
 services.AddCustomAuthentication(builder.Configuration);
 services.AddCustomSwagger();
 services.AddCustomControllers();
-services.AddApiVersioning();
-services.AddEndpointsApiExplorer();
+services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+});
+
 services.AddHealthChecks();
 services.AddAutoMapper(expression =>
 {

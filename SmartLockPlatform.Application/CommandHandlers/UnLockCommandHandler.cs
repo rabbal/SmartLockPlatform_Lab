@@ -20,11 +20,34 @@ public class UnLockCommandHandler : ICommandHandler<UnLockCommand>
 
     public async Task<Result> Handle(UnLockCommand command, CancellationToken cancellationToken)
     {
+        //TODO: CHECK TOTP
+        
         var site = await _dbContext.Set<Site>()
             .Include(s => s.Locks)
             .ThenInclude(l => l.Rights)
             .ThenInclude(r => r.Group)
+            .ThenInclude(g => g.Members)
+            .AsSingleQuery()
             .FindById(command.SiteId, cancellationToken);
+
+        if (site is null) return Forbid($"There is no site with given siteId [{command.SiteId}]");
+
+        var result = site.CanUnLock(command.LockId, command.UserId);
+        if (result.Failed)
+        {
+            return result;
+        }
+
+        var @lock = site.Locks.Single(l => l.Id == command.LockId);
+
+        await _client.UnLock(new UnLockDTO
+        {
+            SiteId = command.SiteId,
+            LockId = command.LockId,
+            LockUuid = @lock.Uuid,
+            UserId = command.UserId,
+            IdempotentId = Guid.NewGuid().ToString("N")
+        }, cancellationToken);
 
         return Ok();
     }

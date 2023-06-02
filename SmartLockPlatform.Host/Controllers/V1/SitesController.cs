@@ -30,11 +30,13 @@ public class SitesController : ControllerBase
         _queries = queries;
     }
 
-    [HttpGet, Authorize(PermissionNames.Sites.View_List)]
-    public Task<PaginatedList<SiteDTO>> GetSites([FromQuery] PaginatedListQueryParams parameters)
+    [HttpGet]
+    //[Authorize(PermissionNames.Sites.View)] TODO: issue related resource-based authz
+    public Task<PaginatedList<SiteDTO>> GetSites(
+        [FromQuery] PaginatedListQueryParams parameters,
+        CancellationToken cancellationToken)
     {
-        var request = _mapper.Map<ListSitesRequest>(parameters) with { OwnerId = User.GetUserId() };
-        return _queries.ListSites(request);
+        return _queries.ListSites(User.GetUserId(), parameters, cancellationToken);
     }
 
     [HttpPost]
@@ -43,7 +45,7 @@ public class SitesController : ControllerBase
         var command = _mapper.Map<RegisterSiteCommand>(model) with { OwnerId = User.GetUserId() };
 
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return BadRequest(result.Message);
+        if (result.Failed) return Problem(result.Message);
 
         return Ok(result.Data);
     }
@@ -52,11 +54,11 @@ public class SitesController : ControllerBase
     [Authorize(PermissionNames.Sites.View_Members)]
     public Task<PaginatedList<MemberDTO>> GetMembers(
         [FromRoute(Name = "site_id")] long siteId,
-        [FromQuery] PaginatedListQueryParams parameters
+        [FromQuery] PaginatedListQueryParams parameters,
+        CancellationToken cancellationToken
     )
     {
-        var request = _mapper.Map<ListMembersRequest>(parameters) with { SiteId = siteId };
-        return _queries.ListMembers(request);
+        return _queries.ListMembers(siteId, parameters, cancellationToken);
     }
 
     [HttpPost("{site_id:long}/members")]
@@ -69,7 +71,7 @@ public class SitesController : ControllerBase
         var command = _mapper.Map<RegisterMemberCommand>(model) with { SiteId = siteId };
 
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return BadRequest(result.Message);
+        if (result.Failed) return Problem(result.Message);
 
         return Ok(result.Data);
     }
@@ -106,11 +108,93 @@ public class SitesController : ControllerBase
         [FromQuery] PaginatedListQueryParams parameters,
         CancellationToken cancellationToken)
     {
-        var request = _mapper.Map<ListLocksRequest>(parameters) with { SiteId = siteId };
-        return _queries.ListLocks(request, cancellationToken);
+        return _queries.ListLocks(siteId, parameters, cancellationToken);
     }
-    
-    
+
+    [HttpGet("{site_id:long}/roles")]
+    [Authorize(PermissionNames.Sites.View_Roles)]
+    public Task<PaginatedList<RoleDTO>> GetRoles(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromQuery] PaginatedListQueryParams parameters,
+        CancellationToken cancellationToken)
+    {
+        return _queries.ListRoles(siteId, parameters, cancellationToken);
+    }
+
+    [HttpGet("{site_id:long}/member_groups")]
+    [Authorize(PermissionNames.Sites.View_MemberGroups)]
+    public Task<PaginatedList<MemberGroupDTO>> GetMemberGroups(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromQuery] PaginatedListQueryParams parameters,
+        CancellationToken cancellationToken)
+    {
+        return _queries.ListMemberGroups(siteId, parameters, cancellationToken);
+    }
+
+    [HttpGet("{site_id:long}/member_groups/{group_id:long}/members")]
+    [Authorize(PermissionNames.Sites.View_MemberGroups)]
+    public Task<PaginatedList<MemberDTO>> GetMemberGroups(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromRoute(Name = "group_id")] long groupId,
+        [FromQuery] PaginatedListQueryParams parameters,
+        CancellationToken cancellationToken)
+    {
+        return _queries.ListMembersInGroup(siteId, groupId, parameters, cancellationToken);
+    }
+
+    [HttpPatch("{site_id:long}/roles/{role_id:long}/members")]
+    [Authorize(PermissionNames.Sites.Manipulate_RoleMembers)]
+    public async Task<ActionResult> ManipulateRoleMembers(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromRoute(Name = "role_id")] long roleId,
+        [FromBody] ManipulateMembersOfRoleDTO model,
+        CancellationToken cancellationToken)
+    {
+        var command = _mapper.Map<ManipulateMembersOfRoleCommand>(model) with { SiteId = siteId, RoleId = roleId };
+
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed) return Problem(result.Message);
+
+        return NoContent();
+    }
+
+    [HttpPatch("{site_id:long}/member_groups/{group_id:long}/members")]
+    [Authorize(PermissionNames.Sites.Manipulate_GroupMembers)]
+    public async Task<ActionResult> ManipulateGroupMembers(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromRoute(Name = "group_id")] long groupId,
+        [FromBody] ManipulateMembersOfGroupDTO model,
+        CancellationToken cancellationToken)
+    {
+        var command = _mapper.Map<ManipulateMembersOfGroupCommand>(model) with { SiteId = siteId, GroupId = groupId };
+
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed) return Problem(result.Message);
+
+        return NoContent();
+    }
+
+    [HttpPost("{site_id:long}/locks/{lock_id:long}/unlock")]
+    public async Task<ActionResult> UnLock(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromRoute(Name = "lock_id")] long lockId,
+        [FromBody] UnLockDTO model,
+        CancellationToken cancellationToken)
+    {
+        var command = _mapper.Map<UnLockCommand>(model) with
+        {
+            SiteId = siteId, LockId = lockId, UserId = User.GetUserId()
+        };
+
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed)
+        {
+            return result.Forbidden ? Forbid(result.Message) : Problem(result.Message);
+        }
+
+        return Ok();
+    }
+
     // [HttpGet("{site_id}/entries"), Authorize(PermissionNames.Sites_View_Entries_Permission)]
     // public IActionResult GetEntries([FromRoute(Name = "site_id")] long siteId)
     // {

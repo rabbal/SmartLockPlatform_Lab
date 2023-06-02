@@ -5,25 +5,21 @@ namespace SmartLockPlatform.Application.Queries;
 
 public interface ISiteQueries
 {
-    Task<PaginatedList<SiteDTO>> ListSites(ListSitesRequest request, CancellationToken cancellationToken = default);
-
-    Task<PaginatedList<MemberDTO>> ListMembers(ListMembersRequest request,
+    Task<PaginatedList<SiteDTO>> ListSites(long ownerId, IPaginatedRequest request,
         CancellationToken cancellationToken = default);
 
-    Task<PaginatedList<LockDTO>> ListLocks(ListLocksRequest request, CancellationToken cancellationToken = default);
-}
+    Task<PaginatedList<MemberDTO>> ListMembers(long siteId, IPaginatedRequest request,
+        CancellationToken cancellationToken = default);
 
-public record ListSitesRequest : PaginatedRequest
-{
-    public long? OwnerId { get; init; }
-}
+    Task<PaginatedList<LockDTO>> ListLocks(long siteId, IPaginatedRequest request,
+        CancellationToken cancellationToken = default);
 
-public record ListMembersRequest : PaginatedRequest
-{
-    public long SiteId { get; set; }
-}
+    Task<PaginatedList<RoleDTO>> ListRoles(long siteId, IPaginatedRequest request,
+        CancellationToken cancellationToken = default);
 
-public record ListLocksRequest : PaginatedRequest
-{
-    public long SiteId { get; set; }
+    Task<PaginatedList<MemberGroupDTO>> ListMemberGroups(long siteId, IPaginatedRequest request,
+        CancellationToken cancellationToken = default);
+
+    Task<PaginatedList<MemberDTO>> ListMembersInGroup(long siteId, long groupId, IPaginatedRequest request,
+        CancellationToken cancellationToken = default);
 }
