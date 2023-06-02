@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 
-namespace SmartLockPlatform.Host.Authorization;
+namespace SmartLockPlatform.Host.Authorization.PermissionBased;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = false)]
 public class PermissionAuthorizeAttribute : AuthorizeAttribute

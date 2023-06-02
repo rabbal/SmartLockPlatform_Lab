@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using SmartLockPlatform.Host.Authorization;
+using SmartLockPlatform.Host.Authorization.ResourceBased;
 
 namespace SmartLockPlatform.Host;
 
@@ -10,7 +11,7 @@ public static class DependencyInjection
     public static IServiceCollection AddCustomAuthorization(this IServiceCollection services)
     {
         services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
-
+        services.AddScoped<IAuthorizationHandler, SiteAuthorizationHandler>();
         return services;
     }
     public static IServiceCollection AddCustomSwagger(this IServiceCollection services)

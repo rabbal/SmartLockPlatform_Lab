@@ -1,8 +1,7 @@
 using System.Security.Claims;
 using SmartLockPlatform.Application.Identity;
-using SmartLockPlatform.Infrastructure.Identity;
 
-namespace SmartLockPlatform.Host.Authorization;
+namespace SmartLockPlatform.Host.Authorization.PermissionBased;
 
 public static class PermissionConstants
 {

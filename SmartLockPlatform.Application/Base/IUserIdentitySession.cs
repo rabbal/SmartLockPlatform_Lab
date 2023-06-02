@@ -12,7 +12,7 @@ public interface IUserIdentitySession
     [MemberNotNullWhen(true, nameof(UserId), nameof(UserDisplayName))]
     bool IsAuthenticated { get; }
 
-    long? UserId { get; }
+    long UserId { get; }
     string? UserDisplayName { get; }
     string? UserBrowserName { get; }
     string? UserIP { get; }

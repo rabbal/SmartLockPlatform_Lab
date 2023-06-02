@@ -41,11 +41,16 @@ public sealed class Member : Entity
 
     public void EnableTotp()
     {
-        
     }
 
     public void ResetTotpToken()
     {
-        
+    }
+
+    public void AssignRole(Role role)
+    {
+        if (_roles.Contains(role)) return;
+
+        _roles.Add(role);
     }
 }

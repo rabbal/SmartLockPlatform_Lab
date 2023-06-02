@@ -10,7 +10,7 @@ public sealed class LockRight : Entity
 #pragma warning restore CS8618
     {
     }
-    public LockRight(MemberGroup group, Timeframe? timeframe)
+    public LockRight(MemberGroup group, Timeframe timeframe)
     {
         Group = group;
         Timeframe = timeframe;

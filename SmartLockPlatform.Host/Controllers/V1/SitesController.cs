@@ -1,12 +1,15 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartLockPlatform.Application.Base;
 using SmartLockPlatform.Application.Commands;
 using SmartLockPlatform.Application.Queries;
 using SmartLockPlatform.Application.Queries.DTO;
 using SmartLockPlatform.Host.Authorization;
+using SmartLockPlatform.Host.Authorization.PermissionBased;
 using SmartLockPlatform.Host.Controllers.V1.Models;
+using SmartLockPlatform.Infrastructure.Identity;
 
 namespace SmartLockPlatform.Host.Controllers.V1;
 
@@ -17,88 +20,63 @@ public class SitesController : ControllerBase
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
     private readonly ISiteQueries _queries;
-    private readonly IUserIdentitySession _identitySession;
 
     public SitesController(
         IMediator mediator,
         IMapper mapper,
-        ISiteQueries queries,
-        IUserIdentitySession identitySession)
+        ISiteQueries queries)
     {
         _mediator = mediator;
         _mapper = mapper;
         _queries = queries;
-        _identitySession = identitySession;
     }
 
-    // [HttpGet, PermissionAuthorize(PermissionNames.Sites_View_List_Permission)]
-    // public Task<PaginatedList<SiteDTO>> GetSites([FromQuery] PaginatedListQueryParams parameters)
-    // {
-    //     return _mediator.Send(new ListSitesQuery
-    //     {
-    //         Filtering = parameters.Filtering,
-    //         Sorting = parameters.Sorting,
-    //         Skip = parameters.Skip,
-    //         Top = parameters.Top,
-    //         IncludeCount = parameters.IncludeCount,
-    //         OwnerId = _identitySession.UserId
-    //     });
-    // }
-    [HttpGet, PermissionAuthorize(PermissionNames.Sites_View_List_Permission)]
+    [HttpGet, Authorize(PermissionNames.Sites.View_List)]
     public Task<PaginatedList<SiteDTO>> GetSites([FromQuery] PaginatedListQueryParams parameters)
     {
-        return _queries.ListSites(new ListSitesRequest
-        {
-            Filtering = parameters.Filtering,
-            Sorting = parameters.Sorting,
-            Skip = parameters.Skip,
-            Top = parameters.Top,
-            IncludeCount = parameters.IncludeCount,
-            OwnerId = _identitySession.UserId
-        });
+        var request = _mapper.Map<ListSitesRequest>(parameters) with { OwnerId = User.GetUserId() };
+        return _queries.ListSites(request);
     }
 
     [HttpPost]
-    //[PermissionAuthorize(PermissionNames.Sites_Register_Permission)]
     public async Task<IActionResult> RegisterSite([FromBody] RegisterSiteDTO model, CancellationToken cancellationToken)
     {
-        var command = _mapper.Map<RegisterSiteCommand>(model);
+        var command = _mapper.Map<RegisterSiteCommand>(model) with { OwnerId = User.GetUserId() };
 
         var result = await _mediator.Send(command, cancellationToken);
         if (result.Failed) return BadRequest(result.Message);
 
-        return Ok(result.Value);
+        return Ok(result.Data);
     }
 
-    // [HttpGet("{site_id:long}/members")]
-    // public Task<PaginatedList<SiteMemberDTO>> GetMembers(
-    //     [FromRoute(Name = "site_id")] long siteId,
-    //     [FromQuery] PaginatedListQueryParams parameters)
-    // {
-    //     return _sender.Send(new ListSiteMembersRequest
-    //     {
-    //         Filtering = parameters.Filtering,
-    //         Sorting = parameters.Sorting,
-    //         Skip = parameters.Skip,
-    //         Top = parameters.Top,
-    //         IncludeCount = parameters.IncludeCount,
-    //         SiteId = siteId
-    //     });
-    // }
-    //
-    // [HttpPost("{site_id:long}")]
-    // public async Task<ActionResult> RegisterMember(
-    //     [FromRoute(Name = "site_id")] long siteId,
-    //     [FromBody] RegisterMemberCommand command,
-    //     CancellationToken cancellationToken)
-    // {
-    //     //command.SiteId = siteId;
-    //     
-    //     var result = await _sender.Send(command, cancellationToken);
-    //     if (result.Failed) return BadRequest(result);
-    //
-    //     return Ok();
-    // }
+    [HttpGet("{site_id:long}/members")]
+    [PermissionAuthorize(PermissionNames.Sites.View_Members)]
+    public Task<PaginatedList<MemberDTO>> GetMembers(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromQuery] PaginatedListQueryParams parameters
+    )
+    {
+        var request = _mapper.Map<ListMembersRequest>(parameters) with { SiteId = siteId };
+        return _queries.ListMembers(request);
+    }
+
+    [HttpPost("{site_id:long}")]
+    [PermissionAuthorize(PermissionNames.Sites.Register_Members)]
+    public async Task<ActionResult> RegisterMember(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromBody] RegisterMemberDTO model,
+        CancellationToken cancellationToken)
+    {
+        var command = _mapper.Map<RegisterMemberCommand>(model) with
+        {
+            SiteId = siteId
+        };
+
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed) return BadRequest(result.Message);
+
+        return Ok(result.Data);
+    }
 
     // [HttpGet("{site_id}/entries"), PermissionAuthorize(PermissionNames.Sites_View_Entries_Permission)]
     // public IActionResult GetEntries([FromRoute(Name = "site_id")] long siteId)

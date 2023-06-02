@@ -1,5 +1,8 @@
+using System.Collections.Concurrent;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using SmartLockPlatform.Domain.Base;
 
@@ -7,6 +10,12 @@ namespace SmartLockPlatform.Application.Base;
 
 public static class QueryableExtensions
 {
+    private static readonly ConcurrentDictionary<Type, PropertyInfo[]> Properties = new();
+    private const string EscapedCommaPattern = @"(?<!($|[^\\])(\\\\)*?\\),";
+
+    private static readonly Regex EscapeRegex = new(EscapedCommaPattern,
+        RegexOptions.Compiled | RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2));
+    
     public static async Task<PaginatedList<T>> ToPaginatedList<T>(this IQueryable<T> source, IPaginatedRequest request,
         CancellationToken cancellationToken = default)
     {
@@ -25,7 +34,7 @@ public static class QueryableExtensions
         // source = source.Where(filterExpression);
 
         var items = await source
-            .OrderBy(sorting) //TODO: support SortExpression
+            .OrderByDynamic(sorting)
             .Skip(skip)
             .Take(top)
             .ToListAsync(cancellationToken);
@@ -76,5 +85,67 @@ public static class QueryableExtensions
         );
 
         return Expression.Lambda<Func<TEntity, bool>>(bodyExpression, instanceExpression);
+    }
+    
+    private static IOrderedQueryable<T> OrderByDynamic<T>(this IQueryable<T> source, string? sorting)
+    {
+        string? ordering = null;
+        if (sorting is not null)
+        {
+            var sortExpressions = EscapeRegex.Split(sorting).Where(sort => !string.IsNullOrWhiteSpace(sort))
+                .Select(SortExpression.FromString).ToList();
+
+            ordering = string.Join(",", sortExpressions);
+        }
+
+        if (string.IsNullOrEmpty(ordering)) ordering = ObtainDefaultSortingExpression(typeof(T)).ToString();
+
+        return source.OrderBy(ordering);
+    }
+
+    private static SortExpression ObtainDefaultSortingExpression(Type type)
+    {
+        var properties =
+            Properties.GetOrAdd(type, t => t.GetProperties(BindingFlags.Instance | BindingFlags.Public));
+
+        var property =
+            Array.Find(properties, p => string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
+        if (property == null)
+        {
+            property = Array.Find(properties, p => p.PropertyType.IsPredefinedType()) ??
+                       throw new NotSupportedException(
+                           "There is not any public property of primitive type for sorting");
+        }
+
+        return new SortExpression(property.Name, true);
+    }
+
+    private static readonly Type[] PredefinedTypes =
+    {
+        typeof(object),
+        typeof(bool),
+        typeof(char),
+        typeof(string),
+        typeof(sbyte),
+        typeof(byte),
+        typeof(short),
+        typeof(ushort),
+        typeof(int),
+        typeof(uint),
+        typeof(long),
+        typeof(ulong),
+        typeof(float),
+        typeof(double),
+        typeof(decimal),
+        typeof(DateTime),
+        typeof(TimeSpan),
+        typeof(Guid),
+        typeof(Math),
+        typeof(Convert)
+    };
+
+    private static bool IsPredefinedType(this Type type)
+    {
+        return PredefinedTypes.Any(t => t == type);
     }
 }

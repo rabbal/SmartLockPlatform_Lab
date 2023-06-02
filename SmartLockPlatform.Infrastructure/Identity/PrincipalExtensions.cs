@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using SmartLockPlatform.Application.Identity;
 
 namespace SmartLockPlatform.Infrastructure.Identity;
 
@@ -16,7 +17,14 @@ public static class PrincipalExtensions
         {
             throw new ArgumentNullException(nameof(principal));
         }
+
         var claim = principal.FindFirst(claimType);
         return claim?.Value;
+    }
+
+    public static long GetUserId(this ClaimsPrincipal principal)
+    {
+        var id = principal.FindFirstValue(UserClaimTypes.UserId);
+        return id is not null ? long.Parse(id) : default;
     }
 }

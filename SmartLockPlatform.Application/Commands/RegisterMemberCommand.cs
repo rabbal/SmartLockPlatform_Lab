@@ -4,8 +4,5 @@ using SmartLockPlatform.Domain.Base;
 
 namespace SmartLockPlatform.Application.Commands;
 
-public record RegisterSiteCommand : ICommand<Result<SiteDTO>>
-{
-    public long OwnerId { get; init; }
-    public string Name { get; init; } = default!;
-}
+public record RegisterMemberCommand
+    (long SiteId, long UserId, string? Alias, IEnumerable<long> RoleIds) : ICommand<Result<MemberDTO>>;

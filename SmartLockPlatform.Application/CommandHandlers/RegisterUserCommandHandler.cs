@@ -35,12 +35,12 @@ public class RegisterUserCommandHandler : ICommandHandler<RegisterUserCommand>
         
         var firstName = new FirstName(command.FirstName);
         var lastName = new LastName(command.LastName);
-        var user = new User(firstName, lastName, email.Value, false);
+        var user = new User(firstName, lastName, email.Data, false);
         
         var password = Password.Create(command.Password, _options.Value.Password);
         if (password.Failed) return password;
 
-        user.SetPassword(password.Value, _hashAlgorithm);
+        user.SetPassword(password.Data, _hashAlgorithm);
 
         await _dbContext.Set<User>().AddAsync(user, cancellationToken);
         await _dbContext.Complete(cancellationToken);

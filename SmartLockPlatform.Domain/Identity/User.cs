@@ -6,10 +6,9 @@ namespace SmartLockPlatform.Domain.Identity;
 public class User : AggregateRoot
 {
 #pragma warning disable CS8618
-    private User(string securityStampToken) //ORM
+    protected User() //ORM
 #pragma warning restore CS8618
     {
-        SecurityStampToken = securityStampToken;
     }
 
     public User(FirstName firstName, LastName lastName, Email email, bool isAdmin)
@@ -18,6 +17,8 @@ public class User : AggregateRoot
         LastName = lastName;
         Email = email;
         IsAdmin = isAdmin;
+        LockoutEnabled = true;
+        IsActive = true; //TODO: must be false by default and activate through email confirmation
         SetStampToken();
     }
     public FirstName FirstName { get; init; }
@@ -31,7 +32,7 @@ public class User : AggregateRoot
 
     public bool IsActive { get; private set; }
     public bool IsAdmin { get; private set; }
-    public bool LockoutEnabled { get; private set; }
+    public bool LockoutEnabled { get; init; }
     public DateTime? LockoutEnd { get; private set; }
     public int FailedLoginCount { get; private set; }
 

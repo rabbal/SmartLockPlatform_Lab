@@ -21,10 +21,11 @@ public sealed class Site : AggregateRoot
     {
         Name = name;
         Owner = owner;
-       // Timezone = timezone;
+        // Timezone = timezone;
     }
 
     public string Name { get; init; }
+
     //public TimeZoneInfo Timezone { get; init; }
     public User Owner { get; init; }
     public IReadOnlyList<Lock> Locks => _locks.AsReadOnly();
@@ -47,7 +48,7 @@ public sealed class Site : AggregateRoot
         var result = Lock.Create(name, uuid);
         if (result.Failed) return result;
 
-        _locks.Add(result.Value);
+        _locks.Add(result.Data);
 
         return Ok();
     }
@@ -98,16 +99,20 @@ public sealed class Site : AggregateRoot
         return Ok();
     }
 
-    public Result RegisterMember(User user, string? alias)
+    public Result<Member> RegisterMember(User user, string? alias, IEnumerable<long> roleIds)
     {
         if (_members.Exists(u => u.User == user))
         {
-            return Fail("The user already exists.");
+            return Fail<Member>("The user already exists.");
         }
 
-        _members.Add(new Member(user, alias));
+        var member = new Member(user, alias);
+        _members.Add(member);
 
-        return Ok();
+        _roles.FindAll(role => roleIds.Contains(role.Id))
+            .ForEach(role => role.RegisterMember(member));
+
+        return member;
     }
 
     public Result RemoveUser(User user)

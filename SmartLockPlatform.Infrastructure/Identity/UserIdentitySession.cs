@@ -34,13 +34,12 @@ internal class UserIdentitySession : IUserIdentitySession
 
     public bool IsAuthenticated => Principal?.Identity?.IsAuthenticated ?? false;
 
-    public long? UserId
+    public long UserId
     {
         get
         {
             var id = Principal?.FindFirstValue(UserClaimTypes.UserId);
-            if (id is not null) return long.Parse(id);
-            return null;
+            return id is not null ? long.Parse(id) : default;
         }
     }
 

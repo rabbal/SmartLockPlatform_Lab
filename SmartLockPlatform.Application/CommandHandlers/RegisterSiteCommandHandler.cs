@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SmartLockPlatform.Application.Base;
 using SmartLockPlatform.Application.Commands;
 using SmartLockPlatform.Application.Queries.DTO;
@@ -10,22 +11,23 @@ namespace SmartLockPlatform.Application.CommandHandlers;
 internal class RegisterSiteCommandHandler : ICommandHandler<RegisterSiteCommand, Result<SiteDTO>>
 {
     private readonly IAppDbContext _dbContext;
-    private readonly IUserIdentitySession _identitySession;
 
-    public RegisterSiteCommandHandler(IAppDbContext dbContext, IUserIdentitySession identitySession)
+    public RegisterSiteCommandHandler(IAppDbContext dbContext)
     {
         _dbContext = dbContext;
-        _identitySession = identitySession;
     }
 
-    public async Task<Result<SiteDTO>> Handle(RegisterSiteCommand request, CancellationToken cancellationToken)
+    public async Task<Result<SiteDTO>> Handle(RegisterSiteCommand command, CancellationToken cancellationToken)
     {
-        _identitySession.ThrowIfUnauthenticated(); //TODO: move into decorator
-
-        var user = await _dbContext.Set<User>().FindById(_identitySession.UserId.Value, cancellationToken);
+        var user = await _dbContext.Set<User>().FindById(command.OwnerId, cancellationToken);
         if (user is null) return Fail<SiteDTO>("The current user hasn't been found in database.");
 
-        var site = new Site(request.Name, user);
+        if (await IsDuplicateSiteWithName(command.Name, cancellationToken))
+        {
+            return Fail<SiteDTO>("A site with given name is already exists.");
+        }
+
+        var site = new Site(command.Name, user);
 
         _dbContext.Set<Site>().Add(site);
         await _dbContext.Complete(cancellationToken);
@@ -43,5 +45,10 @@ internal class RegisterSiteCommandHandler : ICommandHandler<RegisterSiteCommand,
                 Email = user.Email.Value
             }
         };
+    }
+
+    private Task<bool> IsDuplicateSiteWithName(string name, CancellationToken cancellationToken)
+    {
+        return _dbContext.Set<Site>().AnyAsync(i => i.Name == name, cancellationToken);
     }
 }

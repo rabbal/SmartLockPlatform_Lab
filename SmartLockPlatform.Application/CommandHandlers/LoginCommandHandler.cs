@@ -53,7 +53,7 @@ internal class LoginCommandHandler : ICommandHandler<LoginCommand, Result<IReadO
         if (passwordVerification == PasswordVerificationResult.SuccessRehashNeeded)
         {
             var password = Password.Create(command.Password, _options.Password);
-            if (password.Failed == false) user.SetPassword(password.Value, _hashAlgorithm);
+            if (password.Failed == false) user.SetPassword(password.Data, _hashAlgorithm);
         }
 
         if (!user.IsActive)

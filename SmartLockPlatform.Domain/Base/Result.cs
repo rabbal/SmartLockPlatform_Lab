@@ -120,30 +120,30 @@ public class Result
 
 public class Result<T> : Result
 {
-    private readonly T? _value;
+    private readonly T? _data;
 
-    protected internal Result(T? value, bool failed, string message, string? details)
+    protected internal Result(T? data, bool failed, string message, string? details)
         : base(failed, message, details)
     {
-        if (!failed && value is null)
+        if (!failed && data is null)
         {
-            throw new ArgumentNullException(nameof(value), "The value must be provided for ok result");
+            throw new ArgumentNullException(nameof(data), "The value must be provided for ok result");
         }
         
-        _value = value;
+        _data = data;
     }
 
-    protected internal Result(T? value, bool failed, string message, string? details,
+    protected internal Result(T? data, bool failed, string message, string? details,
         IEnumerable<ValidationFailure> failures)
         : base(failed, message, details, failures)
     {
-        _value = value;
+        _data = data;
     }
 
-    [MemberNotNullWhen(false, nameof(Value))]
+    [MemberNotNullWhen(false, nameof(Data))]
     public override bool Failed => base.Failed;
 
-    public T? Value => !Failed ? _value : throw new InvalidOperationException("There is no value for failure.");
+    public T? Data => !Failed ? _data : throw new InvalidOperationException("There is no value for failure.");
 
     public static implicit operator Result<T>(T value)
     {

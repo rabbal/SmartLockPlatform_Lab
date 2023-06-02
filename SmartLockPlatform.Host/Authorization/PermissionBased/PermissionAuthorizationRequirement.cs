@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 
-namespace SmartLockPlatform.Host.Authorization;
+namespace SmartLockPlatform.Host.Authorization.PermissionBased;
 
 public sealed class PermissionAuthorizationRequirement : AuthorizationHandler<PermissionAuthorizationRequirement>,
     IAuthorizationRequirement

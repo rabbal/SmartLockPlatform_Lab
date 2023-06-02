@@ -42,7 +42,7 @@ public class AuthController : ControllerBase
         var result = await _mediator.Send(command, cancellationToken);
         if (result.Failed) return BadRequest(result.Message);
 
-        var claims = result.Value;
+        var claims = result.Data;
         var token = Token.Create(_tokenOptions.Value, claims);
 
         return Ok(token);

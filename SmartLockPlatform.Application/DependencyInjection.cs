@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using SmartLockPlatform.Application.Authorization;
 using SmartLockPlatform.Application.Base;
 using SmartLockPlatform.Application.Queries;
 
@@ -14,6 +15,7 @@ public static class DependencyInjection
             configuration.RegisterServicesFromAssemblyContaining(typeof(DependencyInjection));
         });
         services.AddScoped<ISiteQueries, SiteQueries>();
+        services.AddScoped<IResourceProtector, ResourceProtector>();
         return services;
     }
 }
