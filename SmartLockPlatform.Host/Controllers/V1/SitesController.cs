@@ -7,7 +7,6 @@ using SmartLockPlatform.Application.Commands;
 using SmartLockPlatform.Application.Queries;
 using SmartLockPlatform.Application.Queries.DTO;
 using SmartLockPlatform.Host.Authorization;
-using SmartLockPlatform.Host.Authorization.PermissionBased;
 using SmartLockPlatform.Host.Controllers.V1.Models;
 using SmartLockPlatform.Infrastructure.Identity;
 
@@ -50,7 +49,7 @@ public class SitesController : ControllerBase
     }
 
     [HttpGet("{site_id:long}/members")]
-    [PermissionAuthorize(PermissionNames.Sites.View_Members)]
+    [Authorize(PermissionNames.Sites.View_Members)]
     public Task<PaginatedList<MemberDTO>> GetMembers(
         [FromRoute(Name = "site_id")] long siteId,
         [FromQuery] PaginatedListQueryParams parameters
@@ -60,8 +59,8 @@ public class SitesController : ControllerBase
         return _queries.ListMembers(request);
     }
 
-    [HttpPost("{site_id:long}")]
-    [PermissionAuthorize(PermissionNames.Sites.Register_Members)]
+    [HttpPost("{site_id:long}/members")]
+    [Authorize(PermissionNames.Sites.Register_Members)]
     public async Task<ActionResult> RegisterMember(
         [FromRoute(Name = "site_id")] long siteId,
         [FromBody] RegisterMemberDTO model,
@@ -76,6 +75,16 @@ public class SitesController : ControllerBase
         if (result.Failed) return BadRequest(result.Message);
 
         return Ok(result.Data);
+    }
+
+    [HttpGet("{site_id:long}/members/{member_id:long}")]
+    [Authorize(PermissionNames.Sites.View_Members)]
+    public Task<ActionResult> GetMember(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromRoute(Name = "member_id")] long memberId,
+        CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 
     // [HttpGet("{site_id}/entries"), PermissionAuthorize(PermissionNames.Sites_View_Entries_Permission)]

@@ -15,6 +15,7 @@ public static class DependencyInjection
             configuration.RegisterServicesFromAssemblyContaining(typeof(DependencyInjection));
         });
         services.AddScoped<ISiteQueries, SiteQueries>();
+        services.AddScoped<IUserQueries, UserQueries>();
         services.AddScoped<IResourceProtector, ResourceProtector>();
         return services;
     }

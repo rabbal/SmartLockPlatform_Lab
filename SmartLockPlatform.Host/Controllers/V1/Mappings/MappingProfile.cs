@@ -14,5 +14,6 @@ public class MappingProfile : Profile
         CreateMap<RegisterSiteDTO, RegisterSiteCommand>();
         CreateMap<PaginatedListQueryParams, ListSitesRequest>();
         CreateMap<PaginatedListQueryParams, ListMembersRequest>();
+        CreateMap<RegisterMemberDTO, RegisterMemberCommand>();
     }
 }

@@ -16,7 +16,7 @@ public class AuthorizationPolicyProvider : DefaultAuthorizationPolicyProvider
     {
         if (name.StartsWith(PermissionNames.Sites.Prefix, StringComparison.OrdinalIgnoreCase))
         {
-            new AuthorizationPolicyBuilder()
+            return new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
                 .AddRequirements(new SiteAuthorizationRequirement(name))
                 .Build();

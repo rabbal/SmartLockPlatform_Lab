@@ -4,5 +4,10 @@ using SmartLockPlatform.Domain.Base;
 
 namespace SmartLockPlatform.Application.Commands;
 
-public record RegisterMemberCommand
-    (long SiteId, long UserId, string? Alias, IEnumerable<long> RoleIds) : ICommand<Result<MemberDTO>>;
+public record RegisterMemberCommand : ICommand<Result<MemberDTO>>
+{
+    public long SiteId { get; init; }
+    public long UserId { get; init; }
+    public string? Alias { get; init; }
+    public IEnumerable<long> RoleIds { get; init; } = Array.Empty<long>();
+}
