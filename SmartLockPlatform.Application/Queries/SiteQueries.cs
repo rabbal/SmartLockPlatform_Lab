@@ -59,4 +59,18 @@ internal class SiteQueries : ISiteQueries
             })
             .ToPaginatedList(request, cancellationToken);
     }
+
+    public Task<PaginatedList<LockDTO>> ListLocks(ListLocksRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        return _dbContext.Set<Lock>()
+            .Where(item => EF.Property<long>(item, nameof(request.SiteId)) == request.SiteId)
+            .Select(item => new LockDTO
+            {
+                Id = item.Id,
+                Uuid = item.Uuid,
+                Name = item.Name
+            })
+            .ToPaginatedList(request, cancellationToken);
+    }
 }

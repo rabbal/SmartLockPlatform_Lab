@@ -33,16 +33,16 @@ public sealed class Site : AggregateRoot
     public IReadOnlyList<MemberGroup> Groups => _groups.AsReadOnly();
     public IReadOnlyList<Role> Roles => _roles.AsReadOnly();
 
-    public Result AddLock(string name, string uuid)
+    public Result<Lock> AddLock(string name, string uuid)
     {
         if (_locks.Exists(_ => _.Name == name))
         {
-            return Fail("The lock with given name already exists.");
+            return Fail<Lock>("The lock with given name already exists.");
         }
 
         if (_locks.Exists(_ => _.Uuid == uuid))
         {
-            return Fail("The lock with given uuid already exists.");
+            return Fail<Lock>("The lock with given uuid already exists.");
         }
 
         var result = Lock.Create(name, uuid);
@@ -50,10 +50,11 @@ public sealed class Site : AggregateRoot
 
         _locks.Add(result.Data);
 
-        return Ok();
+        return result.Data;
     }
 
-    public Result UnLock(string uuid, User user)
+    
+    public Result CanUnLock(string uuid, User user)
     {
         var @lock = _locks.Find(_ => _.Uuid == uuid);
 

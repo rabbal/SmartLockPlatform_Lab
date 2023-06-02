@@ -66,10 +66,7 @@ public class SitesController : ControllerBase
         [FromBody] RegisterMemberDTO model,
         CancellationToken cancellationToken)
     {
-        var command = _mapper.Map<RegisterMemberCommand>(model) with
-        {
-            SiteId = siteId
-        };
+        var command = _mapper.Map<RegisterMemberCommand>(model) with { SiteId = siteId };
 
         var result = await _mediator.Send(command, cancellationToken);
         if (result.Failed) return BadRequest(result.Message);
@@ -87,13 +84,40 @@ public class SitesController : ControllerBase
         throw new NotImplementedException();
     }
 
-    // [HttpGet("{site_id}/entries"), PermissionAuthorize(PermissionNames.Sites_View_Entries_Permission)]
+    [HttpPost("{site_id:long}/locks")]
+    [Authorize(PermissionNames.Sites.Register_Lock)]
+    public async Task<ActionResult> RegisterLock(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromBody] RegisterLockDTO model,
+        CancellationToken cancellationToken)
+    {
+        var command = _mapper.Map<RegisterLockCommand>(model) with { SiteId = siteId };
+
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed) return Problem(result.Message);
+
+        return Ok(result.Data);
+    }
+
+    [HttpGet("{site_id:long}/locks")]
+    [Authorize(PermissionNames.Sites.View_Locks)]
+    public Task<PaginatedList<LockDTO>> GetLocks(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromQuery] PaginatedListQueryParams parameters,
+        CancellationToken cancellationToken)
+    {
+        var request = _mapper.Map<ListLocksRequest>(parameters) with { SiteId = siteId };
+        return _queries.ListLocks(request, cancellationToken);
+    }
+    
+    
+    // [HttpGet("{site_id}/entries"), Authorize(PermissionNames.Sites_View_Entries_Permission)]
     // public IActionResult GetEntries([FromRoute(Name = "site_id")] long siteId)
     // {
     //     return Ok();
     // }
     //
-    // [HttpGet("{site_id}/incidents"), PermissionAuthorize(PermissionNames.Sites_View_Incidents_Permission)]
+    // [HttpGet("{site_id}/incidents"), Authorize(PermissionNames.Sites_View_Incidents_Permission)]
     // public IActionResult GetIncidents([FromRoute(Name = "site_id")] long siteId)
     // {
     //     return Ok();

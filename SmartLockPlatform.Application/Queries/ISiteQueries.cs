@@ -9,6 +9,8 @@ public interface ISiteQueries
 
     Task<PaginatedList<MemberDTO>> ListMembers(ListMembersRequest request,
         CancellationToken cancellationToken = default);
+
+    Task<PaginatedList<LockDTO>> ListLocks(ListLocksRequest request, CancellationToken cancellationToken = default);
 }
 
 public record ListSitesRequest : PaginatedRequest
@@ -17,6 +19,11 @@ public record ListSitesRequest : PaginatedRequest
 }
 
 public record ListMembersRequest : PaginatedRequest
+{
+    public long SiteId { get; set; }
+}
+
+public record ListLocksRequest : PaginatedRequest
 {
     public long SiteId { get; set; }
 }
