@@ -22,7 +22,7 @@ public class Result
     }
 
     public virtual bool Failed { get; }
-    public bool Forbidden { get; set; }
+    public bool Forbidden { get; private set; }
     public string Message { get; }
     public string? Details { get; }
     public IEnumerable<ValidationFailure> Failures => _failures.AsReadOnly();

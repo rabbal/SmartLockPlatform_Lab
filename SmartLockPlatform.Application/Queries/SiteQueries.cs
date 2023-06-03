@@ -126,7 +126,7 @@ internal class SiteQueries : ISiteQueries
                     Email = member.User.Email.Value
                 }
             })
-            .AsSingleQuery()
+            .AsSplitQuery()
             .ToPaginatedList(request, cancellationToken);
     }
 }

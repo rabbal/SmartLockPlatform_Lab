@@ -38,7 +38,7 @@ public static class DependencyInjection
             {
                 var options = sp.GetRequiredService<IOptions<SmartMqttClientOptions>>();
 
-                client.BaseAddress = new Uri("https://localhost:7006");
+                client.BaseAddress = new Uri("http://localhost:5298");
                 client.DefaultRequestHeaders.Add("User-Agent", "SmartLockPlatform");
             })
             .AddPolicyHandler(circuitPolicy)

@@ -5,8 +5,8 @@ namespace SmartLockPlatform.Application.External;
 
 public interface ISmartMqttClient
 {
-    [Post("api/v1.0/unlock")]
-    Task<Result> UnLock([Body] UnLockDTO model, CancellationToken cancellationToken = default);
+    [Post("/api/v1.0/unlock")]
+    Task UnLock([Body] UnLockDTO model, CancellationToken cancellationToken = default);
 }
 
 public class UnLockDTO

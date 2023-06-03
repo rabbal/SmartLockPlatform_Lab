@@ -162,18 +162,17 @@ public static class DependencyInjection
                     Url = new Uri("http://github.com/smp")
                 }
             });
-
-            c.CustomSchemaIds(s => s.FullName?.Replace("+", "."));
-
-            c.AddSecurityDefinition("JWT",
+            
+            c.AddSecurityDefinition("Bearer",
                 new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
-                    In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
                     Description =
                         "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Scheme = "bearer"
                 });
             c.AddSecurityRequirement(new OpenApiSecurityRequirement
             {

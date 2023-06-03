@@ -7,27 +7,22 @@ namespace SmartLockPlatform.Mqtt;
 public class MqttClientHostedService : BackgroundService
 {
     private readonly IMqttClient _mqttClient;
-    private readonly IOptions<MqttClientOptions> _options;
+    private readonly MqttClientOptions _options;
     private readonly IOptions<MqttClientSubscribeOptions> _subscribeOptions;
 
-    public MqttClientHostedService(IMqttClient mqttClient,
-        IOptions<MqttClientOptions> options,
+    public MqttClientHostedService(
+        MqttFactory factory,
+        MqttClientOptions options,
         IOptions<MqttClientSubscribeOptions> subscribeOptions)
     {
-        _mqttClient = mqttClient;
+        _mqttClient = factory.CreateMqttClient();
         _options = options;
         _subscribeOptions = subscribeOptions;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var clientOptions = new MqttClientOptionsBuilder()
-            //.WithTcpServer("")
-            .WithWebSocketServer("localhost:8083/mqtt")
-            .WithCredentials("lock1", "lock1")
-            //.WithClientId("clientId")
-            .Build();
-        await _mqttClient.ConnectAsync(clientOptions, stoppingToken);
+        await _mqttClient.ConnectAsync(_options, stoppingToken);
 
         _mqttClient.ApplicationMessageReceivedAsync +=  (e) =>
         {
@@ -35,8 +30,11 @@ public class MqttClientHostedService : BackgroundService
             
             return Task.CompletedTask;
         };
-        var topics = new MqttTopicFilterBuilder().WithTopic("$share/group/locks/+")
-            .WithExactlyOnceQoS().Build();
+        var topics = new MqttTopicFilterBuilder()
+            .WithTopic("$share/group/1")
+            .WithAtLeastOnceQoS()
+            .Build();
+        
         await _mqttClient.SubscribeAsync(topics, stoppingToken);
 
         await Task.Delay(Timeout.Infinite, stoppingToken);
