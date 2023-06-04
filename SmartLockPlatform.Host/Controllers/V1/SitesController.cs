@@ -195,15 +195,20 @@ public class SitesController : ControllerBase
         return Ok();
     }
 
-    // [HttpGet("{site_id}/entries"), Authorize(PermissionNames.Sites_View_Entries_Permission)]
-    // public IActionResult GetEntries([FromRoute(Name = "site_id")] long siteId)
-    // {
-    //     return Ok();
-    // }
-    //
-    // [HttpGet("{site_id}/incidents"), Authorize(PermissionNames.Sites_View_Incidents_Permission)]
-    // public IActionResult GetIncidents([FromRoute(Name = "site_id")] long siteId)
-    // {
-    //     return Ok();
-    // }
+    [HttpGet("{site_id}/entries"), Authorize(PermissionNames.Sites.View_Entries)]
+    public IActionResult GetEntries([FromRoute(Name = "site_id")] long siteId,
+        [FromQuery] PaginatedListQueryParams parameters, CancellationToken cancellationToken)
+    {
+        //TODO: request to SmartLockPlatform.Mqtt
+        
+        return Ok();
+    }
+
+    [HttpGet("{site_id}/incidents"), Authorize(PermissionNames.Sites.View_Incidents)]
+    public IActionResult GetIncidents([FromRoute(Name = "site_id")] long siteId,
+        [FromQuery] PaginatedListQueryParams parameters, CancellationToken cancellationToken)
+    {
+        //TODO: request to SmartLockPlatform.Mqtt
+        return Ok();
+    }
 }
