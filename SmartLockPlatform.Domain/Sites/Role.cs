@@ -21,6 +21,7 @@ public class Role : Entity
 
     public string Name { get; init; }
     public IReadOnlyList<RolePermission> Permissions => _permissions.AsReadOnly();
+    public IReadOnlyList<Member> Members => _members.AsReadOnly();
 
     public void RemovePermission(string name)
     {

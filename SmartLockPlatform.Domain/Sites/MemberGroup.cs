@@ -13,4 +13,9 @@ public class MemberGroup : Entity
 
     public IReadOnlyList<Member> Members => _members.AsReadOnly();
     public string Name { get; set; }
+
+    public void AddMember(Member member)
+    {
+        _members.Add(member);
+    }
 }

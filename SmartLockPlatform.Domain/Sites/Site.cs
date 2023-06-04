@@ -1,6 +1,5 @@
 using SmartLockPlatform.Domain.Base;
 using SmartLockPlatform.Domain.Identity;
-using SmartLockPlatform.Domain.Sites.Events;
 
 namespace SmartLockPlatform.Domain.Sites;
 
@@ -144,5 +143,51 @@ public sealed class Site : AggregateRoot
         return @lock is null ? LockNotFound(uuid) : @lock.RevokeRight(group);
     }
 
+    public Result<Role> RegisterRole(string name, IEnumerable<string> permissions)
+    {
+        if (_roles.Exists(r => r.Name == name)) return Fail<Role>("A role with given name already exists.");
+
+        var role = new Role(name, permissions);
+        _roles.Add(role);
+
+        return role;
+    }
+
     private static Result LockNotFound(string uuid) => Fail($"There is no lock with given uuid [{uuid}].");
+
+    public Result AddMemberToRole(long roleId, long memberId)
+    {
+        var role = _roles.Find(r => r.Id == roleId);
+        if (role is null) return Fail($"There is no role with given roleId [{roleId}]");
+
+        var member = _members.Find(m => m.Id == memberId);
+        if (member is null) return Fail($"There is no member with given memberId [{memberId}]");
+
+        role.RegisterMember(member);
+
+        return Ok();
+    }
+
+    public Result RemoveMemberFromRole(long roleId, long memberId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Result AddMemberToGroup(long groupId, long memberId)
+    {
+        var group = _groups.Find(r => r.Id == groupId);
+        if (group is null) return Fail($"There is no group with given groupId [{groupId}]");
+
+        var member = _members.Find(m => m.Id == memberId);
+        if (member is null) return Fail($"There is no member with given memberId [{memberId}]");
+
+        group.AddMember(member);
+
+        return Ok();
+    }
+
+    public Result RemoveMemberFromGroup(long groupId, long memberId)
+    {
+        throw new NotImplementedException();
+    }
 }

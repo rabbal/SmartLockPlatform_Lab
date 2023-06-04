@@ -2,11 +2,11 @@ namespace SmartLockPlatform.Application.Queries.DTO;
 
 public class MemberDTO
 {
-    public long Id { get; set; }
-    public string? Alias { get; set; }
-    public bool IsBlocked { get; set; }
-    public IReadOnlyList<RoleDTO> Roles { get; set; }
-    public UserDTO User { get; set; }
+    public long Id { get; init; }
+    public string? Alias { get; init; }
+    public bool IsBlocked { get; init; }
+    public IReadOnlyList<RoleDTO> Roles { get; init; } = Array.Empty<RoleDTO>();
+    public UserDTO User { get; init; } = default!;
 }
 
 public class RoleDTO

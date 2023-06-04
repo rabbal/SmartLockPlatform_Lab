@@ -15,5 +15,7 @@ public class MemberTypeConfiguration : IEntityTypeConfiguration<Member>
         builder.Property(m => m.BlockedReason).HasMaxLength(1024);
 
         builder.HasOne(m => m.User).WithMany().OnDelete(DeleteBehavior.Restrict);
+        builder.HasMany(m => m.Roles).WithMany(r => r.Members)
+            .UsingEntity("RoleUsers");
     }
 }
