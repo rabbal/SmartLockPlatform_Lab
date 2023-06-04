@@ -56,7 +56,7 @@ internal class SiteQueries : ISiteQueries
                     Name = role.Name
                 }).ToList()
             })
-            .AsSingleQuery()
+            .AsSplitQuery()
             .ToPaginatedList(request, cancellationToken);
     }
 
@@ -105,7 +105,7 @@ internal class SiteQueries : ISiteQueries
         CancellationToken cancellationToken = default)
     {
         return _dbContext.Set<MemberGroup>()
-            .Where(group => EF.Property<long>(group, "SiteId") == siteId)
+            .Where(group => EF.Property<long>(group, "SiteId") == siteId && group.Id == groupId)
             .SelectMany(group => group.Members)
             .Select(member => new MemberDTO
             {

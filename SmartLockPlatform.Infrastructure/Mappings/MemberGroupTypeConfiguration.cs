@@ -14,6 +14,9 @@ public class MemberGroupTypeConfiguration : IEntityTypeConfiguration<MemberGroup
         builder.Property(mg => mg.Name).HasMaxLength(256);
 
         builder.HasMany(mg => mg.Members).WithMany()
-            .UsingEntity("Membership");
+            .UsingEntity("GroupMembership", membership =>
+            {
+                membership.Property("MembersId").HasColumnName("MemberId");
+            });
     }
 }

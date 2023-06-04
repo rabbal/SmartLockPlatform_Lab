@@ -71,33 +71,8 @@ public sealed class Site : AggregateRoot
 
         if (@lock.CanUnLock(member) == false)
         {
-            return Forbid("You're not allowed to open the lock with id [{id}]");
+            return Forbid($"You're not allowed to open the lock with id [{id}]");
         }
-
-        return Ok();
-    }
-
-    public Lock? FindLock(string uuid)
-    {
-        return _locks.Find(_ => _.Uuid == uuid);
-    }
-
-    public Result PutLockOnline(string uuid)
-    {
-        var @lock = FindLock(uuid);
-        if (@lock is null) return LockNotFound(uuid);
-
-        @lock.PutOnline();
-
-        return Ok();
-    }
-
-    public Result TakeLockOffline(string uuid)
-    {
-        var @lock = FindLock(uuid);
-        if (@lock is null) return LockNotFound(uuid);
-
-        @lock.TakeOffline();
 
         return Ok();
     }
@@ -131,16 +106,26 @@ public sealed class Site : AggregateRoot
         return Ok();
     }
 
-    public Result GrantRightToLock(string uuid, MemberGroup group, Timeframe timeframe)
+    public Result GrantRightToLock(long id, long groupId, Timeframe timeframe)
     {
-        var @lock = FindLock(uuid);
-        return @lock is null ? LockNotFound(uuid) : @lock.GrantRight(group, timeframe);
+        var @lock = _locks.Find(_ => _.Id == id);
+        if (@lock is null) return Fail($"There is no lock with given id [{id}].");
+
+        var group = _groups.Find(g => g.Id == groupId);
+        if (group is null) return Fail($"There is no group with given id [{groupId}].");
+
+        return @lock.GrantRight(group, timeframe);
     }
 
-    public Result RevokeRightFromLock(string uuid, MemberGroup group)
+    public Result RevokeRightFromLock(long id, long groupId)
     {
-        var @lock = FindLock(uuid);
-        return @lock is null ? LockNotFound(uuid) : @lock.RevokeRight(group);
+        var @lock = _locks.Find(_ => _.Id == id);
+        if (@lock is null) return Fail($"There is no lock with given id [{id}].");
+
+        var group = _groups.Find(g => g.Id == groupId);
+        if (group is null) return Fail($"There is no group with given id [{groupId}].");
+
+        return @lock.RevokeRight(group);
     }
 
     public Result<Role> RegisterRole(string name, IEnumerable<string> permissions)
@@ -153,7 +138,6 @@ public sealed class Site : AggregateRoot
         return role;
     }
 
-    private static Result LockNotFound(string uuid) => Fail($"There is no lock with given uuid [{uuid}].");
 
     public Result AddMemberToRole(long roleId, long memberId)
     {
@@ -189,5 +173,15 @@ public sealed class Site : AggregateRoot
     public Result RemoveMemberFromGroup(long groupId, long memberId)
     {
         throw new NotImplementedException();
+    }
+
+    public Result<MemberGroup> AddMemberGroup(string name)
+    {
+        if (_groups.Exists(g => g.Name == name)) return Fail<MemberGroup>("A group with given name already exists.");
+
+        var group = new MemberGroup(name);
+        _groups.Add(group);
+
+        return group;
     }
 }

@@ -24,18 +24,17 @@ public class UnLockCommandHandler : ICommandHandler<UnLockCommand>
         //TODO: CHECK TOTP
 
         var site = await _dbContext.Set<Site>()
+            .Include(s => s.Members)
+            .ThenInclude(m => m.User)
             .Include(s => s.Owner)
-            .Include(s => s.Locks)
+            .Include(s => s.Locks.Where(l => l.Id == command.LockId))
             .ThenInclude(l => l.Rights)
             .ThenInclude(r => r.Group)
             .ThenInclude(g => g.Members)
-            .AsSingleQuery()
+            .AsSplitQuery()
             .FindById(command.SiteId, cancellationToken);
 
         if (site is null) return Fail($"There is no site with given siteId [{command.SiteId}]");
-
-        var user = await _dbContext.Set<User>().FindById(command.UserId, cancellationToken);
-        if (user is null) return Fail($"There is no user with given userId [{command.UserId}]");
 
         var result = site.CanUnLock(command.LockId, command.UserId);
         if (result.Failed)

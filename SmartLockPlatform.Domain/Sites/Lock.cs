@@ -32,6 +32,7 @@ public class Lock : Entity
 
         return new Lock(name, uuid);
     }
+
     internal void UnLock()
     {
         //TODO: check potential pre-conditions
@@ -62,7 +63,7 @@ public class Lock : Entity
 
         return Ok();
     }
-    
+
     internal Result RevokeRight(MemberGroup group)
     {
         if (group is null) throw new ArgumentNullException(nameof(group));
@@ -80,6 +81,6 @@ public class Lock : Entity
 
     public bool CanUnLock(Member member)
     {
-        return _rights.Exists(right => right.Group.Members.Contains(member));
+        return _rights.Count == 0 || _rights.Exists(right => right.Group.Members.Contains(member));
     }
 }

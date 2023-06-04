@@ -30,7 +30,7 @@ public class AuthController : ControllerBase
         var command = _mapper.Map<RegisterUserCommand>(model);
         var result = await _mediator.Send(command, cancellationToken);
 
-        if (result.Failed) return BadRequest(result.Message);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
 
         return Ok();
     }
@@ -40,7 +40,7 @@ public class AuthController : ControllerBase
     {
         var command = _mapper.Map<LoginCommand>(model);
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return BadRequest(result.Message);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
 
         var claims = result.Data;
         var token = Token.Create(_tokenOptions.Value, claims);

@@ -14,5 +14,10 @@ public class MappingProfile : Profile
         CreateMap<RegisterMemberDTO, RegisterMemberCommand>();
         CreateMap<RegisterLockDTO, RegisterLockCommand>();
         CreateMap<UnLockDTO, UnLockCommand>();
+        CreateMap<RegisterRoleDTO, RegisterRoleCommand>();
+        CreateMap<ManipulateMembersOfRoleDTO, ManipulateMembersOfRoleCommand>();
+        CreateMap<ManipulateMembersOfGroupDTO, ManipulateMembersOfGroupCommand>();
+        CreateMap<RegisterMemberGroupDTO, RegisterMemberGroupCommand>();
+        CreateMap<GrantRightToLockDTO, GrantRightToLockCommand>();
     }
 }

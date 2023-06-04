@@ -65,7 +65,7 @@ public static class DependencyInjection
         services.Configure<TokenOptions>(options => authentication.Bind(options));
 
         var signingKey =
-            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authentication[nameof(TokenOptions.SigningKey)]));
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authentication[nameof(TokenOptions.SigningKey)] ?? throw new InvalidOperationException()));
 
         var tokenValidationParameters = new TokenValidationParameters
         {
@@ -112,12 +112,7 @@ public static class DependencyInjection
                         logger.LogError(context.Exception, "Authentication Failed");
                         return Task.CompletedTask;
                     },
-                    OnTokenValidated = async context =>
-                    {
-                        // var validator = context.HttpContext.RequestServices.GetRequiredService<ITokenValidator>();
-                        // await validator.ValidateAsync(context);
-                        //context.Principal.AddIdentity(new ClaimsIdentity());
-                    },
+                    OnTokenValidated = context => Task.CompletedTask,
                     OnMessageReceived = context =>
                     {
                         var accessToken = context.Request.Query["access_token"];

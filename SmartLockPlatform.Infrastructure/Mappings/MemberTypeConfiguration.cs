@@ -16,6 +16,10 @@ public class MemberTypeConfiguration : IEntityTypeConfiguration<Member>
 
         builder.HasOne(m => m.User).WithMany().OnDelete(DeleteBehavior.Restrict);
         builder.HasMany(m => m.Roles).WithMany(r => r.Members)
-            .UsingEntity("RoleUsers");
+            .UsingEntity("RoleMembership", membership =>
+            {
+                membership.Property("MembersId").HasColumnName("MemberId");
+                membership.Property("RolesId").HasColumnName("RoleId");
+            });
     }
 }

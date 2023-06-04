@@ -45,7 +45,7 @@ public class SitesController : ControllerBase
         var command = _mapper.Map<RegisterSiteCommand>(model) with { OwnerId = User.GetUserId() };
 
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return Problem(result.Message);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
 
         return Ok(result.Data);
     }
@@ -71,7 +71,7 @@ public class SitesController : ControllerBase
         var command = _mapper.Map<RegisterMemberCommand>(model) with { SiteId = siteId };
 
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return Problem(result.Message);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
 
         return Ok(result.Data);
     }
@@ -96,7 +96,7 @@ public class SitesController : ControllerBase
         var command = _mapper.Map<RegisterLockCommand>(model) with { SiteId = siteId };
 
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return Problem(result.Message);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
 
         return Ok(result.Data);
     }
@@ -121,6 +121,21 @@ public class SitesController : ControllerBase
         return _queries.ListRoles(siteId, parameters, cancellationToken);
     }
 
+    [HttpPost("{site_id:long}/roles")]
+    [Authorize(PermissionNames.Sites.Register_Role)]
+    public async Task<ActionResult<RoleDTO>> RegisterRole(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromBody] RegisterRoleDTO model,
+        CancellationToken cancellationToken
+    )
+    {
+        var command = _mapper.Map<RegisterRoleCommand>(model) with { SiteId = siteId };
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
+
+        return Ok(result.Data);
+    }
+
     [HttpGet("{site_id:long}/member_groups")]
     [Authorize(PermissionNames.Sites.View_MemberGroups)]
     public Task<PaginatedList<MemberGroupDTO>> GetMemberGroups(
@@ -131,8 +146,40 @@ public class SitesController : ControllerBase
         return _queries.ListMemberGroups(siteId, parameters, cancellationToken);
     }
 
+    [HttpPost("{site_id:long}/member_groups")]
+    [Authorize(PermissionNames.Sites.Register_MemberGroup)]
+    public async Task<ActionResult<MemberGroupDTO>> RegisterMemberGroup(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromBody] RegisterMemberGroupDTO model,
+        CancellationToken cancellationToken
+    )
+    {
+        var command = _mapper.Map<RegisterMemberGroupCommand>(model) with { SiteId = siteId };
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
+
+        return Ok(result.Data);
+    }
+
+    [HttpPost("{site_id:long}/member_groups/{group_id}/locks")]
+    [Authorize(PermissionNames.Sites.Grant_RightToLock)]
+    public async Task<ActionResult<MemberGroupDTO>> GrantRightToLock(
+        [FromRoute(Name = "site_id")] long siteId,
+        [FromRoute(Name = "group_id")] long groupId,
+        [FromBody] GrantRightToLockDTO model,
+        CancellationToken cancellationToken
+    )
+    {
+        var command = _mapper.Map<GrantRightToLockCommand>(model) with { SiteId = siteId, GroupId = groupId };
+        var result = await _mediator.Send(command, cancellationToken);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
+
+        return Ok();
+    }
+
+
     [HttpGet("{site_id:long}/member_groups/{group_id:long}/members")]
-    [Authorize(PermissionNames.Sites.View_MemberGroups)]
+    [Authorize(PermissionNames.Sites.View_MembersOfGroup)]
     public Task<PaginatedList<MemberDTO>> GetMemberGroups(
         [FromRoute(Name = "site_id")] long siteId,
         [FromRoute(Name = "group_id")] long groupId,
@@ -153,7 +200,7 @@ public class SitesController : ControllerBase
         var command = _mapper.Map<ManipulateMembersOfRoleCommand>(model) with { SiteId = siteId, RoleId = roleId };
 
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return Problem(result.Message);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
 
         return NoContent();
     }
@@ -169,7 +216,7 @@ public class SitesController : ControllerBase
         var command = _mapper.Map<ManipulateMembersOfGroupCommand>(model) with { SiteId = siteId, GroupId = groupId };
 
         var result = await _mediator.Send(command, cancellationToken);
-        if (result.Failed) return Problem(result.Message);
+        if (result.Failed) return Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
 
         return NoContent();
     }
@@ -189,7 +236,9 @@ public class SitesController : ControllerBase
         var result = await _mediator.Send(command, cancellationToken);
         if (result.Failed)
         {
-            return result.Forbidden ? Forbid(result.Message) : Problem(result.Message);
+            return result.Forbidden
+                ? Problem(result.Message, statusCode: StatusCodes.Status403Forbidden)
+                : Problem(result.Message, statusCode: StatusCodes.Status400BadRequest);
         }
 
         return Ok();
@@ -200,7 +249,7 @@ public class SitesController : ControllerBase
         [FromQuery] PaginatedListQueryParams parameters, CancellationToken cancellationToken)
     {
         //TODO: request to SmartLockPlatform.Mqtt
-        
+
         return Ok();
     }
 
