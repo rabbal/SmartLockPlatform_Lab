@@ -1,0 +1,565 @@
+[2023-06-05 00:01:14.810 INF 018] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/members?$top=100&$include_count=true&$sorting=alias_desc - -
+[2023-06-05 00:01:15.108 INF 007] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMembers (SmartLockPlatform.Host)'
+[2023-06-05 00:01:15.130 INF 007] Route matched with {action = "GetMembers", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMembers(Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:01:16.051 INF 018] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:01:16.116 INF 018] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMembers (SmartLockPlatform.Host) in 986.0653ms
+[2023-06-05 00:01:16.117 INF 018] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMembers (SmartLockPlatform.Host)'
+[2023-06-05 00:01:16.121 INF 018] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/members?$top=100&$include_count=true&$sorting=alias_desc - - - 200 - application/json;+charset=utf-8 1311.0895ms
+[2023-06-05 00:02:37.554 INF 007] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups?$top=100&$include_count=true&$sorting=name_desc - -
+[2023-06-05 00:02:37.584 INF 007] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:02:37.611 INF 007] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO]] GetMemberGroups(Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:02:37.721 INF 007] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:02:37.739 INF 007] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 127.8066ms
+[2023-06-05 00:02:37.740 INF 007] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:02:37.741 INF 007] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups?$top=100&$include_count=true&$sorting=name_desc - - - 200 - application/json;+charset=utf-8 186.8065ms
+[2023-06-05 00:03:37.860 INF 020] Request starting HTTP/1.1 PATCH https://localhost:7118/api/v1.0/sites/11/member_groups/13/members application/json 92
+[2023-06-05 00:03:37.864 INF 020] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.ManipulateGroupMembers (SmartLockPlatform.Host)'
+[2023-06-05 00:03:37.875 INF 020] Route matched with {action = "ManipulateGroupMembers", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] ManipulateGroupMembers(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.ManipulateMembersOfGroupDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:03:38.030 WRN 020] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2023-06-05 00:03:38.253 INF 021] Executing StatusCodeResult, setting HTTP status code 204
+[2023-06-05 00:03:38.253 INF 021] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.ManipulateGroupMembers (SmartLockPlatform.Host) in 378.0734ms
+[2023-06-05 00:03:38.253 INF 021] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.ManipulateGroupMembers (SmartLockPlatform.Host)'
+[2023-06-05 00:03:38.254 INF 021] Request finished HTTP/1.1 PATCH https://localhost:7118/api/v1.0/sites/11/member_groups/13/members application/json 92 - 204 - - 393.5551ms
+[2023-06-05 00:19:37.790 INF 004] Application is shutting down...
+[2023-06-05 00:19:54.632 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:19:56.181 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:19:57.837 INF 009] No migrations were applied. The database is already up to date.
+[2023-06-05 00:19:57.857 INF 009] Migrated database associated with context AppDbContext
+[2023-06-05 00:19:57.915 INF 009] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:19:58.176 INF 009] Now listening on: https://localhost:7118
+[2023-06-05 00:19:58.176 INF 009] Now listening on: http://localhost:5062
+[2023-06-05 00:19:58.176 INF 009] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:19:58.176 INF 009] Hosting environment: Development
+[2023-06-05 00:19:58.176 INF 009] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:19:59.351 INF 004] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:19:59.656 INF 014] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 307.3552ms
+[2023-06-05 00:19:59.954 INF 014] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:20:00.254 INF 014] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 299.7405ms
+[2023-06-05 00:23:40.440 INF 020] Application is shutting down...
+[2023-06-05 00:23:56.001 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:23:58.022 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:24:00.119 INF 009] No migrations were applied. The database is already up to date.
+[2023-06-05 00:24:00.140 INF 009] Migrated database associated with context AppDbContext
+[2023-06-05 00:24:00.208 INF 009] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:24:00.477 INF 009] Now listening on: https://localhost:7118
+[2023-06-05 00:24:00.477 INF 009] Now listening on: http://localhost:5062
+[2023-06-05 00:24:00.477 INF 009] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:24:00.477 INF 009] Hosting environment: Development
+[2023-06-05 00:24:00.477 INF 009] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:24:01.379 INF 014] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:24:01.712 INF 015] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 333.6738ms
+[2023-06-05 00:24:02.141 INF 014] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:24:02.734 INF 014] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 593.0781ms
+[2023-06-05 00:24:59.661 INF 003] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/locks?$top=100&$include_count=true&$sorting=name_desc - -
+[2023-06-05 00:25:02.099 INF 006] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host)'
+[2023-06-05 00:25:02.212 INF 006] Route matched with {action = "GetLocks", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.LockDTO]] GetLocks(Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:25:04.371 INF 018] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.LockDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:25:04.561 INF 018] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host) in 2330.0884ms
+[2023-06-05 00:25:04.564 INF 018] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host)'
+[2023-06-05 00:25:04.571 INF 018] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/locks?$top=100&$include_count=true&$sorting=name_desc - - - 200 - application/json;+charset=utf-8 4911.8291ms
+[2023-06-05 00:25:08.044 INF 015] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/locks?$top=100&$include_count=true&$sorting=name_desc - -
+[2023-06-05 00:25:08.058 INF 015] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host)'
+[2023-06-05 00:25:08.059 INF 015] Route matched with {action = "GetLocks", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.LockDTO]] GetLocks(Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:25:08.071 INF 003] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.LockDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:25:08.072 INF 003] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host) in 13.1074ms
+[2023-06-05 00:25:08.072 INF 003] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host)'
+[2023-06-05 00:25:08.072 INF 003] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/locks?$top=100&$include_count=true&$sorting=name_desc - - - 200 - application/json;+charset=utf-8 28.4548ms
+[2023-06-05 00:25:48.199 INF 017] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks application/json 60
+[2023-06-05 00:25:48.208 INF 017] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.RegisterLock (SmartLockPlatform.Host)'
+[2023-06-05 00:25:48.238 INF 017] Route matched with {action = "RegisterLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] RegisterLock(Int64, SmartLockPlatform.Host.Controllers.V1.Models.RegisterLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:25:49.681 INF 017] Executing OkObjectResult, writing value of type 'SmartLockPlatform.Application.Queries.DTO.LockDTO'.
+[2023-06-05 00:25:49.682 INF 017] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.RegisterLock (SmartLockPlatform.Host) in 1442.7002ms
+[2023-06-05 00:25:49.682 INF 017] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.RegisterLock (SmartLockPlatform.Host)'
+[2023-06-05 00:25:49.683 INF 017] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks application/json 60 - 200 - application/json;+charset=utf-8 1483.1582ms
+[2023-06-05 00:26:06.335 INF 017] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups?$top=100&$include_count=true&$sorting=name_desc - -
+[2023-06-05 00:26:06.342 INF 017] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:26:06.355 INF 017] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO]] GetMemberGroups(Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:26:06.436 INF 003] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:26:06.444 INF 003] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 88.6918ms
+[2023-06-05 00:26:06.444 INF 003] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:26:06.446 INF 003] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups?$top=100&$include_count=true&$sorting=name_desc - - - 200 - application/json;+charset=utf-8 110.7585ms
+[2023-06-05 00:26:35.607 INF 020] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/11/locks application/json 22
+[2023-06-05 00:26:35.610 INF 020] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:26:35.625 INF 020] Route matched with {action = "GrantRightToLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO]] GrantRightToLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.GrantRightToLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:26:35.666 INF 020] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host) in 41.2739ms
+[2023-06-05 00:26:35.667 INF 020] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:26:35.797 ERR 020] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+GrantRightToLockDTO -> GrantRightToLockCommand
+SmartLockPlatform.Host.Controllers.V1.Models.GrantRightToLockDTO -> SmartLockPlatform.Application.Commands.GrantRightToLockCommand
+   at lambda_method355(Closure, Object, GrantRightToLockCommand, ResolutionContext)
+   at SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock(Int64 siteId, Int64 groupId, GrantRightToLockDTO model, CancellationToken cancellationToken) in D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host\Controllers\V1\SitesController.cs:line 173
+   at lambda_method348(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Hellang.Middleware.ProblemDetails.ProblemDetailsMiddleware.Invoke(HttpContext context)
+[2023-06-05 00:26:35.805 INF 020] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:26:35.828 INF 020] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/11/locks application/json 22 - 500 - application/problem+json;+charset=utf-8 221.2916ms
+[2023-06-05 00:26:55.841 INF 022] Application is shutting down...
+[2023-06-05 00:27:11.813 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:27:13.589 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:27:16.090 INF 009] No migrations were applied. The database is already up to date.
+[2023-06-05 00:27:16.111 INF 009] Migrated database associated with context AppDbContext
+[2023-06-05 00:27:16.184 INF 009] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:27:16.458 INF 009] Now listening on: https://localhost:7118
+[2023-06-05 00:27:16.458 INF 009] Now listening on: http://localhost:5062
+[2023-06-05 00:27:16.459 INF 009] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:27:16.459 INF 009] Hosting environment: Development
+[2023-06-05 00:27:16.459 INF 009] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:27:17.425 INF 016] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:27:17.877 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 453.8210ms
+[2023-06-05 00:27:18.187 INF 007] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:27:18.490 INF 016] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 302.7013ms
+[2023-06-05 00:27:25.150 INF 007] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/11/locks application/json 22
+[2023-06-05 00:27:26.900 INF 016] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:27:27.029 INF 016] Route matched with {action = "GrantRightToLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO]] GrantRightToLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.GrantRightToLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:27:28.685 WRN 007] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2023-06-05 00:27:29.486 INF 007] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:27:29.538 INF 007] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host) in 2488.7825ms
+[2023-06-05 00:27:29.542 INF 007] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:27:29.546 INF 007] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/11/locks application/json 22 - 400 - application/problem+json;+charset=utf-8 4395.4211ms
+[2023-06-05 00:31:54.814 INF 013] Application is shutting down...
+[2023-06-05 00:32:03.308 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:32:04.745 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:32:06.360 INF 015] No migrations were applied. The database is already up to date.
+[2023-06-05 00:32:06.377 INF 015] Migrated database associated with context AppDbContext
+[2023-06-05 00:32:06.428 INF 015] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:32:06.631 INF 015] Now listening on: https://localhost:7118
+[2023-06-05 00:32:06.631 INF 015] Now listening on: http://localhost:5062
+[2023-06-05 00:32:06.631 INF 015] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:32:06.631 INF 015] Hosting environment: Development
+[2023-06-05 00:32:06.631 INF 015] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:32:07.262 INF 007] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:32:07.519 INF 015] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 258.7288ms
+[2023-06-05 00:32:07.746 INF 009] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:32:07.954 INF 015] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 207.7498ms
+[2023-06-05 00:32:23.205 INF 015] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/11/locks application/json 22
+[2023-06-05 00:32:24.083 INF 007] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:32:24.133 INF 007] Route matched with {action = "GrantRightToLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO]] GrantRightToLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.GrantRightToLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:32:25.755 INF 014] Executing StatusCodeResult, setting HTTP status code 200
+[2023-06-05 00:32:25.767 INF 014] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host) in 1623.9532ms
+[2023-06-05 00:32:25.769 INF 014] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:32:25.779 INF 014] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/11/locks application/json 22 - 200 0 - 2574.3318ms
+[2023-06-05 00:32:40.937 INF 015] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/12/locks application/json 22
+[2023-06-05 00:32:40.970 INF 015] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:32:40.971 INF 015] Route matched with {action = "GrantRightToLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[SmartLockPlatform.Application.Queries.DTO.MemberGroupDTO]] GrantRightToLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.GrantRightToLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:32:41.043 INF 015] Executing StatusCodeResult, setting HTTP status code 200
+[2023-06-05 00:32:41.043 INF 015] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host) in 71.7001ms
+[2023-06-05 00:32:41.043 INF 015] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GrantRightToLock (SmartLockPlatform.Host)'
+[2023-06-05 00:32:41.044 INF 015] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/member_groups/12/locks application/json 22 - 200 0 - 106.6551ms
+[2023-06-05 00:33:58.813 INF 003] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100 - -
+[2023-06-05 00:33:58.844 INF 003] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:33:58.878 INF 003] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:34:00.124 INF 004] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:34:00.236 INF 004] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 1358.4059ms
+[2023-06-05 00:34:00.237 INF 004] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:34:00.239 INF 004] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100 - - - 200 - application/json;+charset=utf-8 1426.1572ms
+[2023-06-05 00:34:26.244 INF 013] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - -
+[2023-06-05 00:34:26.249 INF 004] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:34:26.249 INF 004] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:34:26.387 INF 020] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:34:26.390 INF 020] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 140.6439ms
+[2023-06-05 00:34:26.390 INF 020] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:34:26.390 INF 020] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - - - 200 - application/json;+charset=utf-8 146.3926ms
+[2023-06-05 00:34:53.723 INF 004] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/11/members?$top=100&$include_count=true - -
+[2023-06-05 00:34:53.734 INF 020] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:34:53.734 INF 020] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:34:53.778 INF 018] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:34:53.779 INF 018] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 44.154ms
+[2023-06-05 00:34:53.779 INF 018] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:34:53.779 INF 018] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/11/members?$top=100&$include_count=true - - - 200 - application/json;+charset=utf-8 55.7025ms
+[2023-06-05 00:35:04.569 INF 018] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - -
+[2023-06-05 00:35:04.585 INF 018] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:35:04.588 INF 018] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:35:04.659 INF 018] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:35:04.660 INF 018] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 72.4772ms
+[2023-06-05 00:35:04.661 INF 018] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:35:04.661 INF 018] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - - - 200 - application/json;+charset=utf-8 92.5206ms
+[2023-06-05 00:36:44.012 INF 016] Application is shutting down...
+[2023-06-05 00:36:52.957 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:36:54.427 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:36:56.146 INF 017] No migrations were applied. The database is already up to date.
+[2023-06-05 00:36:56.161 INF 017] Migrated database associated with context AppDbContext
+[2023-06-05 00:36:56.217 INF 017] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:36:56.422 INF 017] Now listening on: https://localhost:7118
+[2023-06-05 00:36:56.422 INF 017] Now listening on: http://localhost:5062
+[2023-06-05 00:36:56.422 INF 017] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:36:56.422 INF 017] Hosting environment: Development
+[2023-06-05 00:36:56.422 INF 017] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:36:57.411 INF 009] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:36:57.673 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 263.5167ms
+[2023-06-05 00:36:57.911 INF 007] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:36:58.124 INF 009] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 213.7357ms
+[2023-06-05 00:37:02.118 INF 004] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - -
+[2023-06-05 00:37:03.367 INF 007] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:03.422 INF 007] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:37:05.167 INF 017] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:37:05.262 INF 017] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 1833.191ms
+[2023-06-05 00:37:05.264 INF 017] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:05.266 INF 017] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - - - 200 - application/json;+charset=utf-8 3147.5756ms
+[2023-06-05 00:37:11.368 INF 009] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/11/members?$top=100&$include_count=true - -
+[2023-06-05 00:37:11.394 INF 009] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:11.394 INF 009] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:37:11.423 INF 009] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:37:11.424 INF 009] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 29.3659ms
+[2023-06-05 00:37:11.424 INF 009] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:11.424 INF 009] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/11/members?$top=100&$include_count=true - - - 200 - application/json;+charset=utf-8 56.2591ms
+[2023-06-05 00:37:17.204 INF 004] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/12/members?$top=100&$include_count=true - -
+[2023-06-05 00:37:17.209 INF 004] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:17.209 INF 004] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:37:17.216 INF 017] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:37:17.217 INF 017] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 7.7402ms
+[2023-06-05 00:37:17.217 INF 017] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:17.217 INF 017] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/12/members?$top=100&$include_count=true - - - 200 - application/json;+charset=utf-8 13.2650ms
+[2023-06-05 00:37:55.130 INF 009] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - -
+[2023-06-05 00:37:55.133 INF 009] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:55.133 INF 009] Route matched with {action = "GetMemberGroups", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.MemberDTO]] GetMemberGroups(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:37:55.157 INF 020] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.MemberDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:37:55.158 INF 020] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host) in 24.5551ms
+[2023-06-05 00:37:55.158 INF 020] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetMemberGroups (SmartLockPlatform.Host)'
+[2023-06-05 00:37:55.158 INF 020] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/member_groups/13/members?$top=100&$include_count=true - - - 200 - application/json;+charset=utf-8 28.4119ms
+[2023-06-05 00:38:35.311 INF 009] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/auth/token application/json 66
+[2023-06-05 00:38:35.315 INF 009] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.AuthController.Login (SmartLockPlatform.Host)'
+[2023-06-05 00:38:35.331 INF 009] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Login(SmartLockPlatform.Host.Controllers.V1.Models.LoginDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.AuthController (SmartLockPlatform.Host).
+[2023-06-05 00:38:36.189 INF 019] Executing OkObjectResult, writing value of type 'SmartLockPlatform.Host.Authentication.Token'.
+[2023-06-05 00:38:36.192 INF 019] Executed action SmartLockPlatform.Host.Controllers.V1.AuthController.Login (SmartLockPlatform.Host) in 860.8182ms
+[2023-06-05 00:38:36.193 INF 019] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.AuthController.Login (SmartLockPlatform.Host)'
+[2023-06-05 00:38:36.196 INF 019] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/auth/token application/json 66 - 200 - application/json;+charset=utf-8 885.0765ms
+[2023-06-05 00:38:50.123 INF 017] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/locks?$top=100&$include_count=true&$sorting=name_desc - -
+[2023-06-05 00:38:50.154 INF 009] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host)'
+[2023-06-05 00:38:50.176 INF 009] Route matched with {action = "GetLocks", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[SmartLockPlatform.Application.Base.PaginatedList`1[SmartLockPlatform.Application.Queries.DTO.LockDTO]] GetLocks(Int64, SmartLockPlatform.Host.Controllers.V1.Models.PaginatedListQueryParams, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:38:50.218 INF 019] Executing ObjectResult, writing value of type 'SmartLockPlatform.Application.Base.PaginatedList`1[[SmartLockPlatform.Application.Queries.DTO.LockDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:38:50.224 INF 019] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host) in 48.1624ms
+[2023-06-05 00:38:50.224 INF 019] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.GetLocks (SmartLockPlatform.Host)'
+[2023-06-05 00:38:50.225 INF 019] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/sites/11/locks?$top=100&$include_count=true&$sorting=name_desc - - - 200 - application/json;+charset=utf-8 101.6308ms
+[2023-06-05 00:39:04.873 INF 017] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:39:04.875 INF 017] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:39:04.891 INF 017] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:39:06.057 INF 022] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:39:06.059 INF 022] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 1168.2058ms
+[2023-06-05 00:39:06.059 INF 022] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:39:06.059 INF 022] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 400 - application/problem+json;+charset=utf-8 1185.8594ms
+[2023-06-05 00:40:45.532 INF 021] Application is shutting down...
+[2023-06-05 00:40:51.744 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:40:53.004 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:40:54.780 INF 014] No migrations were applied. The database is already up to date.
+[2023-06-05 00:40:54.795 INF 014] Migrated database associated with context AppDbContext
+[2023-06-05 00:40:54.850 INF 014] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:40:55.082 INF 014] Now listening on: https://localhost:7118
+[2023-06-05 00:40:55.082 INF 014] Now listening on: http://localhost:5062
+[2023-06-05 00:40:55.083 INF 014] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:40:55.083 INF 014] Hosting environment: Development
+[2023-06-05 00:40:55.083 INF 014] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:40:55.892 INF 016] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:40:56.172 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 281.2883ms
+[2023-06-05 00:40:56.379 INF 016] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:40:56.895 INF 016] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 515.2048ms
+[2023-06-05 00:41:24.181 INF 019] Request starting HTTP/1.1 GET https://localhost:7118/api/v1.0/users/search?search_term=mar - -
+[2023-06-05 00:41:24.866 INF 019] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.UsersController.Search (SmartLockPlatform.Host)'
+[2023-06-05 00:41:24.936 INF 019] Route matched with {action = "Search", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[System.Collections.Generic.IReadOnlyList`1[SmartLockPlatform.Application.Queries.DTO.UserDTO]] Search(System.String, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.UsersController (SmartLockPlatform.Host).
+[2023-06-05 00:41:26.608 INF 018] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[SmartLockPlatform.Application.Queries.DTO.UserDTO, SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2023-06-05 00:41:26.709 INF 018] Executed action SmartLockPlatform.Host.Controllers.V1.UsersController.Search (SmartLockPlatform.Host) in 1755.8352ms
+[2023-06-05 00:41:26.719 INF 018] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.UsersController.Search (SmartLockPlatform.Host)'
+[2023-06-05 00:41:26.760 INF 018] Request finished HTTP/1.1 GET https://localhost:7118/api/v1.0/users/search?search_term=mar - - - 200 - application/json;+charset=utf-8 2578.1225ms
+[2023-06-05 00:41:31.339 INF 009] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:41:31.343 INF 009] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:41:31.363 INF 009] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:41:34.115 INF 018] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:41:34.119 INF 018] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 2756.2198ms
+[2023-06-05 00:41:34.119 INF 018] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:41:34.126 INF 018] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 400 - application/problem+json;+charset=utf-8 2787.1946ms
+[2023-06-05 00:43:34.073 INF 013] Application is shutting down...
+[2023-06-05 00:43:50.433 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:43:52.173 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:43:54.459 INF 007] No migrations were applied. The database is already up to date.
+[2023-06-05 00:43:54.474 INF 007] Migrated database associated with context AppDbContext
+[2023-06-05 00:43:54.570 INF 007] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:43:54.950 INF 007] Now listening on: https://localhost:7118
+[2023-06-05 00:43:54.950 INF 007] Now listening on: http://localhost:5062
+[2023-06-05 00:43:54.951 INF 007] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:43:54.951 INF 007] Hosting environment: Development
+[2023-06-05 00:43:54.951 INF 007] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:43:55.647 INF 007] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:43:56.206 INF 009] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 560.6811ms
+[2023-06-05 00:43:56.774 INF 007] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:43:57.120 INF 010] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 345.5968ms
+[2023-06-05 00:44:05.032 INF 009] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:44:05.401 INF 009] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:44:05.455 INF 009] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:44:43.437 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:44:46.062 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:44:50.405 INF 013] No migrations were applied. The database is already up to date.
+[2023-06-05 00:44:50.437 INF 013] Migrated database associated with context AppDbContext
+[2023-06-05 00:44:51.064 INF 013] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:44:51.664 INF 013] Now listening on: https://localhost:7118
+[2023-06-05 00:44:51.664 INF 013] Now listening on: http://localhost:5062
+[2023-06-05 00:44:51.666 INF 013] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:44:51.666 INF 013] Hosting environment: Development
+[2023-06-05 00:44:51.666 INF 013] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:44:56.600 INF 010] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:44:57.130 INF 009] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 532.5402ms
+[2023-06-05 00:44:57.519 INF 009] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:44:58.027 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 507.8155ms
+[2023-06-05 00:45:02.606 INF 013] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:45:04.506 INF 013] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:45:04.763 INF 013] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:45:52.626 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:45:58.349 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:46:02.464 INF 010] No migrations were applied. The database is already up to date.
+[2023-06-05 00:46:02.496 INF 010] Migrated database associated with context AppDbContext
+[2023-06-05 00:46:02.693 INF 010] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:46:03.357 INF 010] Now listening on: https://localhost:7118
+[2023-06-05 00:46:03.357 INF 010] Now listening on: http://localhost:5062
+[2023-06-05 00:46:03.357 INF 010] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:46:03.358 INF 010] Hosting environment: Development
+[2023-06-05 00:46:03.358 INF 010] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:46:03.926 INF 013] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:46:04.658 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 734.9545ms
+[2023-06-05 00:46:05.042 INF 010] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:46:05.528 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 485.8500ms
+[2023-06-05 00:47:26.057 INF 016] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:47:26.537 INF 016] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:47:26.613 INF 016] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:49:05.064 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:49:06.595 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:49:08.340 INF 004] No migrations were applied. The database is already up to date.
+[2023-06-05 00:49:08.359 INF 004] Migrated database associated with context AppDbContext
+[2023-06-05 00:49:08.419 INF 004] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:49:08.699 INF 004] Now listening on: https://localhost:7118
+[2023-06-05 00:49:08.699 INF 004] Now listening on: http://localhost:5062
+[2023-06-05 00:49:08.699 INF 004] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:49:08.700 INF 004] Hosting environment: Development
+[2023-06-05 00:49:08.700 INF 004] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:49:09.731 INF 015] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:49:10.093 INF 009] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 364.6117ms
+[2023-06-05 00:49:10.342 INF 009] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:49:10.828 INF 009] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 485.8677ms
+[2023-06-05 00:49:14.255 INF 007] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:49:14.776 INF 007] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:49:14.841 INF 007] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:49:18.567 INF 014] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 3703.5217ms
+[2023-06-05 00:49:18.571 INF 014] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:49:18.952 ERR 014] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SmartLockPlatform.Domain.Sites.Site.<>c__DisplayClass23_0.<CanUnLock>b__0(Member u) in D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Domain\Sites\Site.cs:line 60
+   at System.Collections.Generic.List`1.Find(Predicate`1 match)
+   at SmartLockPlatform.Domain.Sites.Site.CanUnLock(Int64 id, Int64 userId) in D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Domain\Sites\Site.cs:line 60
+   at SmartLockPlatform.Application.CommandHandlers.UnLockCommandHandler.Handle(UnLockCommand command, CancellationToken cancellationToken) in D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Application\CommandHandlers\UnLockCommandHandler.cs:line 38
+   at SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock(Int64 siteId, Int64 lockId, UnLockDTO model, CancellationToken cancellationToken) in D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host\Controllers\V1\SitesController.cs:line 236
+   at lambda_method54(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Hellang.Middleware.ProblemDetails.ProblemDetailsMiddleware.Invoke(HttpContext context)
+[2023-06-05 00:49:18.987 INF 014] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:49:19.042 INF 014] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 500 - application/problem+json;+charset=utf-8 4787.0924ms
+[2023-06-05 00:52:39.006 INF 003] Application is shutting down...
+[2023-06-05 00:52:49.270 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:52:50.659 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:52:52.571 INF 006] No migrations were applied. The database is already up to date.
+[2023-06-05 00:52:52.593 INF 006] Migrated database associated with context AppDbContext
+[2023-06-05 00:52:52.658 INF 006] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:52:52.913 INF 006] Now listening on: https://localhost:7118
+[2023-06-05 00:52:52.913 INF 006] Now listening on: http://localhost:5062
+[2023-06-05 00:52:52.913 INF 006] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:52:52.913 INF 006] Hosting environment: Development
+[2023-06-05 00:52:52.913 INF 006] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:52:54.135 INF 009] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:52:54.508 INF 014] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 375.3571ms
+[2023-06-05 00:52:54.807 INF 014] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:52:55.092 INF 016] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 285.0067ms
+[2023-06-05 00:53:08.930 INF 018] Application is shutting down...
+[2023-06-05 00:53:16.729 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:53:17.931 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:53:19.561 INF 009] No migrations were applied. The database is already up to date.
+[2023-06-05 00:53:19.576 INF 009] Migrated database associated with context AppDbContext
+[2023-06-05 00:53:19.618 INF 009] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:53:19.802 INF 009] Now listening on: https://localhost:7118
+[2023-06-05 00:53:19.802 INF 009] Now listening on: http://localhost:5062
+[2023-06-05 00:53:19.803 INF 009] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:53:19.803 INF 009] Hosting environment: Development
+[2023-06-05 00:53:19.803 INF 009] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:53:20.774 INF 004] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:53:21.102 INF 016] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 338.7751ms
+[2023-06-05 00:53:21.284 INF 004] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:53:21.494 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 210.8206ms
+[2023-06-05 00:53:29.461 INF 007] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:53:29.774 INF 007] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:53:29.823 INF 007] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:53:32.454 INF 007] Executing ForbidResult with authentication schemes (["You're not allowed to open the lock with id [{id}]"]).
+[2023-06-05 00:53:32.474 INF 007] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 2638.7881ms
+[2023-06-05 00:53:32.475 INF 007] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:53:32.594 ERR 007] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No authentication handler is registered for the scheme 'You're not allowed to open the lock with id [{id}]'. The registered schemes are: Bearer. Did you forget to call AddAuthentication().Add[SomeAuthHandler]("You're not allowed to open the lock with id [{id}]",...)?
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ForbidAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ForbidResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Hellang.Middleware.ProblemDetails.ProblemDetailsMiddleware.Invoke(HttpContext context)
+[2023-06-05 00:53:32.620 INF 007] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:53:32.672 INF 007] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 500 - application/problem+json;+charset=utf-8 3211.2692ms
+[2023-06-05 00:54:37.061 INF 019] Application is shutting down...
+[2023-06-05 00:54:55.413 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:54:58.011 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:55:01.574 INF 007] No migrations were applied. The database is already up to date.
+[2023-06-05 00:55:01.609 INF 007] Migrated database associated with context AppDbContext
+[2023-06-05 00:55:01.710 INF 007] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:55:02.368 INF 007] Now listening on: https://localhost:7118
+[2023-06-05 00:55:02.368 INF 007] Now listening on: http://localhost:5062
+[2023-06-05 00:55:02.369 INF 007] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:55:02.369 INF 007] Hosting environment: Development
+[2023-06-05 00:55:02.369 INF 007] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:55:02.830 INF 009] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:55:03.241 INF 016] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 413.0330ms
+[2023-06-05 00:55:03.992 INF 009] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:55:04.375 INF 016] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 383.5975ms
+[2023-06-05 00:55:06.005 INF 009] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:55:06.645 INF 009] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:55:06.776 INF 009] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:55:12.478 INF 009] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:55:12.534 INF 009] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 5740.734ms
+[2023-06-05 00:55:12.537 INF 009] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:55:12.544 INF 009] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 403 - application/problem+json;+charset=utf-8 6538.8148ms
+[2023-06-05 00:55:16.592 INF 007] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:55:16.605 INF 007] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:55:16.606 INF 007] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:55:16.745 INF 009] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:55:16.749 INF 009] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 141.5135ms
+[2023-06-05 00:55:16.749 INF 009] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:55:16.749 INF 009] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 403 - application/problem+json;+charset=utf-8 156.8518ms
+[2023-06-05 00:55:40.888 INF 003] Application is shutting down...
+[2023-06-05 00:55:53.801 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:55:56.521 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:55:59.108 INF 015] No migrations were applied. The database is already up to date.
+[2023-06-05 00:55:59.137 INF 015] Migrated database associated with context AppDbContext
+[2023-06-05 00:55:59.239 INF 015] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:55:59.810 INF 015] Now listening on: https://localhost:7118
+[2023-06-05 00:55:59.810 INF 015] Now listening on: http://localhost:5062
+[2023-06-05 00:55:59.811 INF 015] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:55:59.811 INF 015] Hosting environment: Development
+[2023-06-05 00:55:59.811 INF 015] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:56:00.181 INF 014] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:56:00.614 INF 007] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 436.0575ms
+[2023-06-05 00:56:01.025 INF 007] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:56:01.379 INF 015] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 354.4603ms
+[2023-06-05 00:56:28.321 INF 015] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:56:28.751 INF 015] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:28.817 INF 015] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:56:32.628 INF 015] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:56:32.669 INF 015] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 3836.1659ms
+[2023-06-05 00:56:32.672 INF 015] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:32.683 INF 015] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 403 - application/problem+json;+charset=utf-8 4362.7096ms
+[2023-06-05 00:56:35.706 INF 018] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:56:35.715 INF 018] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:35.716 INF 018] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:56:35.768 INF 019] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:56:35.769 INF 019] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 53.2953ms
+[2023-06-05 00:56:35.769 INF 019] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:35.770 INF 019] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 403 - application/problem+json;+charset=utf-8 63.7714ms
+[2023-06-05 00:56:48.025 INF 018] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/21/unlock application/json 24
+[2023-06-05 00:56:48.035 INF 018] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:48.035 INF 018] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:56:48.115 INF 018] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:56:48.115 INF 018] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 79.5812ms
+[2023-06-05 00:56:48.115 INF 018] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:48.115 INF 018] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/21/unlock application/json 24 - 403 - application/problem+json;+charset=utf-8 90.4547ms
+[2023-06-05 00:56:54.069 INF 018] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/11/unlock application/json 24
+[2023-06-05 00:56:54.071 INF 018] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:54.071 INF 018] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:56:54.089 INF 007] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:56:54.090 INF 007] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 19.5569ms
+[2023-06-05 00:56:54.090 INF 007] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:56:54.091 INF 007] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/11/unlock application/json 24 - 403 - application/problem+json;+charset=utf-8 21.5646ms
+[2023-06-05 00:57:28.275 INF 003] Application is shutting down...
+[2023-06-05 00:57:40.110 INF 001] Migrating database associated with context AppDbContext
+[2023-06-05 00:57:41.906 WRN 001] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2023-06-05 00:57:44.271 INF 007] No migrations were applied. The database is already up to date.
+[2023-06-05 00:57:44.294 INF 007] Migrated database associated with context AppDbContext
+[2023-06-05 00:57:44.376 INF 007] User profile is available. Using 'C:\Users\salarr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2023-06-05 00:57:44.803 INF 007] Now listening on: https://localhost:7118
+[2023-06-05 00:57:44.803 INF 007] Now listening on: http://localhost:5062
+[2023-06-05 00:57:44.804 INF 007] Application started. Press Ctrl+C to shut down.
+[2023-06-05 00:57:44.804 INF 007] Hosting environment: Development
+[2023-06-05 00:57:44.804 INF 007] Content root path: D:\Salto\SmartLockPlatform\src\SmartLockPlatform.Host
+[2023-06-05 00:57:46.161 INF 016] Request starting HTTP/2 GET https://localhost:7118/swagger/index.html - -
+[2023-06-05 00:57:46.618 INF 004] Request finished HTTP/2 GET https://localhost:7118/swagger/index.html - - - 200 - text/html;charset=utf-8 462.3402ms
+[2023-06-05 00:57:46.846 INF 007] Request starting HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - -
+[2023-06-05 00:57:47.159 INF 004] Request finished HTTP/2 GET https://localhost:7118/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 312.4919ms
+[2023-06-05 00:57:53.025 INF 016] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/11/unlock application/json 24
+[2023-06-05 00:57:53.760 INF 016] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:57:53.841 INF 016] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:58:00.314 INF 016] Start processing HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:00.648 INF 016] Sending HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:06.647 INF 016] Sending HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:12.211 INF 004] Sending HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:19.391 INF 016] Sending HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:29.758 INF 019] Sending HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:30.596 INF 009] Received HTTP response headers after 820.9264ms - 200
+[2023-06-05 00:58:30.619 INF 009] End processing HTTP request after 30330.4144ms - 200
+[2023-06-05 00:58:30.710 INF 009] Executing StatusCodeResult, setting HTTP status code 200
+[2023-06-05 00:58:30.745 INF 009] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 36875.293ms
+[2023-06-05 00:58:30.749 INF 009] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:58:30.784 INF 009] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/11/unlock application/json 24 - 200 0 - 37759.6795ms
+[2023-06-05 00:58:37.671 INF 016] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/11/unlock application/json 24
+[2023-06-05 00:58:37.689 INF 016] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:58:37.690 INF 016] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:58:37.791 INF 016] Start processing HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:37.792 INF 016] Sending HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:38.055 INF 016] Received HTTP response headers after 262.4553ms - 200
+[2023-06-05 00:58:38.057 INF 016] End processing HTTP request after 266.1215ms - 200
+[2023-06-05 00:58:38.062 INF 016] Executing StatusCodeResult, setting HTTP status code 200
+[2023-06-05 00:58:38.062 INF 016] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 371.5961ms
+[2023-06-05 00:58:38.063 INF 016] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:58:38.069 INF 016] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/11/unlock application/json 24 - 200 0 - 397.6496ms
+[2023-06-05 00:58:44.492 INF 016] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/21/unlock application/json 24
+[2023-06-05 00:58:44.499 INF 016] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:58:44.500 INF 016] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:58:44.549 INF 016] Start processing HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:44.549 INF 016] Sending HTTP request POST http://localhost:5298/api/v1.0/unlock
+[2023-06-05 00:58:44.603 INF 016] Received HTTP response headers after 53.3951ms - 200
+[2023-06-05 00:58:44.603 INF 016] End processing HTTP request after 55.8933ms - 200
+[2023-06-05 00:58:44.604 INF 016] Executing StatusCodeResult, setting HTTP status code 200
+[2023-06-05 00:58:44.604 INF 016] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 103.9562ms
+[2023-06-05 00:58:44.604 INF 016] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:58:44.604 INF 016] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/21/unlock application/json 24 - 200 0 - 112.3086ms
+[2023-06-05 00:58:49.661 INF 019] Request starting HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24
+[2023-06-05 00:58:49.666 INF 019] Executing endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:58:49.666 INF 019] Route matched with {action = "UnLock", controller = "Sites"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] UnLock(Int64, Int64, SmartLockPlatform.Host.Controllers.V1.Models.UnLockDTO, System.Threading.CancellationToken) on controller SmartLockPlatform.Host.Controllers.V1.SitesController (SmartLockPlatform.Host).
+[2023-06-05 00:58:50.279 INF 019] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2023-06-05 00:58:50.287 INF 019] Executed action SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host) in 621.0456ms
+[2023-06-05 00:58:50.287 INF 019] Executed endpoint 'SmartLockPlatform.Host.Controllers.V1.SitesController.UnLock (SmartLockPlatform.Host)'
+[2023-06-05 00:58:50.288 INF 019] Request finished HTTP/1.1 POST https://localhost:7118/api/v1.0/sites/11/locks/31/unlock application/json 24 - 403 - application/problem+json;+charset=utf-8 626.4951ms

@@ -1,0 +1,6 @@
+{
+  "SmartLockPlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Salto\\SmartLockPlatform\\src\\SmartLockPlatform.Application",
+  "SmartLockPlatform.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Salto\\SmartLockPlatform\\src\\SmartLockPlatform.Domain",
+  "SmartLockPlatform.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Salto\\SmartLockPlatform\\src\\SmartLockPlatform.Host",
+  "SmartLockPlatform.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Salto\\SmartLockPlatform\\src\\SmartLockPlatform.Infrastructure"
+}
