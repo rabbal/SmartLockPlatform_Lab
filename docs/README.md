@@ -5,11 +5,11 @@
 ### C4 Model
 
 ![Context Diagram](./smart_lock_platform.c4model.context.PNG)
-![Context Diagram](./smart_lock_platform.c4model.container.v1.PNG)
-![Context Diagram](./smart_lock_platform.c4model.container.porposal.PNG)
+![Container Diagram](./smart_lock_platform.c4model.container.v1.PNG)
+![Container Diagram](./smart_lock_platform.c4model.container.porposal.PNG)
 
 ### Domain Model
-
+![Class Diagram](./domain_model.PNG)
 
 
 ### Communication with Smart Locks

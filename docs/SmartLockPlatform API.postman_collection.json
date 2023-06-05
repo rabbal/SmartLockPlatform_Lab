@@ -1,0 +1,662 @@
+{
+	"info": {
+		"_postman_id": "3c7cc796-f37d-467b-b832-9882e485a14b",
+		"name": "SmartLockPlatform API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20995621"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "sign-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mary@example.com\",\r\n    \"password\": \"uSer2@123\",\r\n    \"firstName\": \"mary\",\r\n    \"lastName\": \"mousalou\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/auth/sign-up",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"pm.globals.set(\"access_token\", response.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mary@example.com\",\r\n    \"password\": \"@dmiN123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/auth/token",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sites",
+			"item": [
+				{
+					"name": "add site",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"site_id\", pm.response.json().id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"office 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get sites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites?$top=10&$include_count=true",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites"
+							],
+							"query": [
+								{
+									"key": "$top",
+									"value": "10"
+								},
+								{
+									"key": "$include_count",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "locks",
+			"item": [
+				{
+					"name": "add lock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Storage room\",\r\n    \"uuid\": \"12.44.55.61\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/locks",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"locks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get locks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/locks?$top=100&$include_count=true&$sorting=name_desc",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"locks"
+							],
+							"query": [
+								{
+									"key": "$top",
+									"value": "100"
+								},
+								{
+									"key": "$include_count",
+									"value": "true"
+								},
+								{
+									"key": "$sorting",
+									"value": "name_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\":\"223344\" //todo: needs google authenticator implemenation \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/locks/31/unlock",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"locks",
+								"31",
+								"unlock"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "add role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Super Admin 2\",\r\n    \"permissions\": [\r\n        \"Sites:Manipulate_RoleMembers\",\r\n        \"Sites:Manipulate_GroupMembers\",\r\n        \"Sites:View_Entries\",\r\n        \"Sites:View_Incidents\",\r\n        \"Sites:View_Locks\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/roles",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/roles?$top=100&$include_count=true",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "$top",
+									"value": "100"
+								},
+								{
+									"key": "$include_count",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "manipulate members",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newMemberIds\":[\r\n        21\r\n    ],\r\n    \"removedMemberIds\":[\r\n\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/roles/11/members",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"roles",
+								"11",
+								"members"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "members",
+			"item": [
+				{
+					"name": "add member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 1,\r\n    \"alias\": \"mary alias\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/members",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/members?$top=100&$include_count=true&$sorting=alias_desc",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"members"
+							],
+							"query": [
+								{
+									"key": "$top",
+									"value": "100"
+								},
+								{
+									"key": "$include_count",
+									"value": "true"
+								},
+								{
+									"key": "$sorting",
+									"value": "alias_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "member_groups",
+			"item": [
+				{
+					"name": "add member_group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Employees\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/member_groups",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"member_groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get member_groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/member_groups?$top=100&$include_count=true&$sorting=name_desc",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"member_groups"
+							],
+							"query": [
+								{
+									"key": "$top",
+									"value": "100"
+								},
+								{
+									"key": "$include_count",
+									"value": "true"
+								},
+								{
+									"key": "$sorting",
+									"value": "name_desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "manipulate members",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newMemberIds\": [\r\n        21\r\n    ],\r\n    \"removedMemberIds\" : [\r\n        \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/member_groups/13/members",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"member_groups",
+								"13",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "grant right to lock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lockId\": 31\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/member_groups/12/locks",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"member_groups",
+								"12",
+								"locks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get members of member_group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/sites/{{site_id}}/member_groups/13/members?$top=100&$include_count=true",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"sites",
+								"{{site_id}}",
+								"member_groups",
+								"13",
+								"members"
+							],
+							"query": [
+								{
+									"key": "$top",
+									"value": "100"
+								},
+								{
+									"key": "$include_count",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/api/v1.0/users/search?search_term=mar",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "search_term",
+									"value": "mar"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "site_id",
+			"value": "11"
+		}
+	]
+}
