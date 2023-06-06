@@ -1,4 +1,4 @@
-# SmartLockPlatfrom with MVP mindset
+# SmartLockPlatfrom with and MVP mindset
 
 ## Architecture
 
